@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">FinalProject</string>
+    <string name="app_name" translatable="false">FinalProject</string>
+    <string name="Team">
+        Team members:\n
+        1- Hicham Sajaa\n
+        2- Omar Saeed\n
+        3- Gin Lin\n
+        4- Mousa Abdualziz
+
+    </string>
+
 </resources>
