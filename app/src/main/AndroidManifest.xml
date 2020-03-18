@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BBCNEWS"></activity>
+        <activity android:name=".ShowNasaImage"></activity>
+        <activity android:name=".BBCNEWS" />
         <activity android:name=".NasaImageOfTheDay" />
         <activity android:name=".NasaDatabase" />
         <activity android:name=".Guardian" />
