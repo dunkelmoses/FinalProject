@@ -1,25 +1,26 @@
 package com.example.finalproject;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import org.json.JSONObject;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import android.widget.Toast;
+
+import com.google.android.material.navigation.NavigationView;
+
 import java.util.Calendar;
 
-public class NasaImageOfTheDay extends AppCompatActivity {
+public class NasaImageOfTheDay extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
 
     private TextView showDate;
     private String date;
@@ -36,6 +37,18 @@ public class NasaImageOfTheDay extends AppCompatActivity {
         showDate = findViewById(R.id.DateTextView);
         enterDate = findViewById(R.id.EnterTheDate);
         clickHere = findViewById(R.id.ClickToSee);
+
+        Toolbar tBar = (Toolbar) findViewById(R.id.toolbar);
+
+        //For NavigationDrawer:
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
+                drawer, tBar, R.string.open, R.string.close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         enterDate.setOnClickListener(d -> {
             datePickerDialog = new DatePickerDialog(
@@ -55,13 +68,36 @@ public class NasaImageOfTheDay extends AppCompatActivity {
 
             datePickerDialog.show();
         });
-        clickHere.setOnClickListener(c->{
-            intent = new Intent(NasaImageOfTheDay.this, ShowNasaImage.class);
-            intent.putExtra("date", date);
-            startActivity(intent);
-        });
 
+            clickHere.setOnClickListener(c -> {
+                if (date!=null) {
+                    intent = new Intent(NasaImageOfTheDay.this, ShowNasaImage.class);
+                    intent.putExtra("date", date);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(this, "You Must Enter a Date first", Toast.LENGTH_SHORT).show();
+                }
+            });
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+        switch(item.getItemId())
+        {
+            case R.id.MainPage:
+                break;
+            case R.id.FavouriteList:
+                break;
+            case R.id.SearchForPictures:
+                break;
+
+        }
+
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        return false;
+    }
 }

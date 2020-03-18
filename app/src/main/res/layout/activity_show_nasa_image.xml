@@ -7,16 +7,26 @@
     tools:context=".ShowNasaImage"
     android:padding="10dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/showUrl"
-        android:hint="FUCK"
-        />
+
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ImageFromUrl"
-        android:layout_below="@+id/showUrl"/>
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/AddToFav"
+        android:layout_below="@+id/ImageFromUrl"
+        android:text="Add he picture to favourite list"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/BackToDatePage"
+        android:layout_below="@+id/AddToFav"
+        android:text="Search for new picture"
+        />
 </RelativeLayout>
