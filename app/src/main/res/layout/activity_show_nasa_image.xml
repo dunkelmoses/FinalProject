@@ -15,11 +15,32 @@
         android:id="@+id/ImageFromUrl"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dateOftheImage"
+        android:layout_below="@+id/ImageFromUrl"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:clickable="true"
+        android:layout_below="@+id/dateOftheImage"
+        android:id="@+id/RegUrl"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:clickable="true"
+        android:layout_below="@id/RegUrl"
+        android:id="@+id/hdUrl"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/AddToFav"
-        android:layout_below="@+id/ImageFromUrl"
+        android:layout_below="@+id/hdUrl"
         android:text="Add he picture to favourite list"
         />
     <Button
