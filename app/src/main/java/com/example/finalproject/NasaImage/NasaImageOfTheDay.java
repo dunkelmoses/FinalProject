@@ -18,6 +18,7 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.finalproject.MainActivity;
 import com.example.finalproject.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -89,14 +90,17 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
         switch(item.getItemId())
         {
             case R.id.MainPage:
-                Intent mainPage = new Intent(NasaImageOfTheDay.this,NasaImageOfTheDay.class);
+                Intent mainPage = new Intent(NasaImageOfTheDay.this, MainActivity.class);
                 startActivity(mainPage);
                 break;
             case R.id.FavouriteList:
                 Intent intent = new Intent(NasaImageOfTheDay.this,ImagesList.class);
                 startActivity(intent);
                 break;
-
+            case R.id.SearchImage:
+                Intent search = new Intent(NasaImageOfTheDay.this,NasaImageOfTheDay.class);
+                startActivity(search);
+                break;
         }
 
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);

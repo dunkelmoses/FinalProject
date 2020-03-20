@@ -6,15 +6,16 @@
     android:orientation="vertical"
     android:id="@+id/root">
 
-<ImageView
-    android:paddingTop="10dp"
-    android:paddingLeft="10dp"
-    android:layout_width="200dp"
-    android:layout_height="100dp"
-    android:id="@+id/AlgonquinIcon"
-    android:src="@drawable/algonquinicon"
-    />
 
+    <ImageView
+        android:id="@+id/AlgonquinIcon"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="14dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:src="@drawable/algonquinicon" />
 
     <RelativeLayout
         android:layout_width="match_parent"
