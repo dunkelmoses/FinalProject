@@ -161,6 +161,8 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
         switch(item.getItemId())
         {
             case R.id.MainPage:
+                Intent mainPage = new Intent(ShowNasaImage.this,NasaImageOfTheDay.class);
+                startActivity(mainPage);
                 break;
             case R.id.FavouriteList:
                 Intent intent = new Intent(ShowNasaImage.this,ImagesList.class);

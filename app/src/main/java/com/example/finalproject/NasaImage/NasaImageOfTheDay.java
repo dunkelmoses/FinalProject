@@ -89,6 +89,8 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
         switch(item.getItemId())
         {
             case R.id.MainPage:
+                Intent mainPage = new Intent(NasaImageOfTheDay.this,NasaImageOfTheDay.class);
+                startActivity(mainPage);
                 break;
             case R.id.FavouriteList:
                 Intent intent = new Intent(NasaImageOfTheDay.this,ImagesList.class);
