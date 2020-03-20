@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 
+import com.example.finalproject.NasaImage.NasaImageOfTheDay;
+
 public class MainActivity extends AppCompatActivity {
     ImageButton imageButton1,imageButton2,imageButton3,imageButton4;
     @Override
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         imageButton2.setOnClickListener(imageButton1->
         {
-            Intent intent = new Intent(this,NasaImageOfTheDay.class);
+            Intent intent = new Intent(this, NasaImageOfTheDay.class);
             startActivity(intent);
         });
 

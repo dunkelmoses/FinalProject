@@ -1,45 +1,38 @@
-package com.example.finalproject;
+package com.example.finalproject.NasaImage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.finalproject.R;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class ShowNasaImage extends AppCompatActivity {
     private Intent intent;
-    private String date;
+    private String date, hdImageURL, imageURL;
     private Button addFav;
     private Button backTo;
     private Bitmap saveImage;
@@ -47,8 +40,8 @@ public class ShowNasaImage extends AppCompatActivity {
     private ImageView imageView;
     private OutputStream outputStream;
     private TextView dateImage, urlImage, hdUrlImage;
-
-
+    DatabaseNasaImage db;
+    ArrayList<String> arrayList ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,13 +57,13 @@ public class ShowNasaImage extends AppCompatActivity {
         date = intent.getStringExtra("date");
         CallJson callJson = new CallJson();
         callJson.execute();
+        db = new DatabaseNasaImage(this);
 
 
     }
 
     public class CallJson extends AsyncTask<String, Integer, String> {
         String result;
-        String imageURL, hdImageURL;
         Bitmap image;
 
         @Override
@@ -108,34 +101,40 @@ public class ShowNasaImage extends AppCompatActivity {
             urlImage.setText(imageURL);
             hdUrlImage.setText(hdImageURL);
             addFav.setOnClickListener(add -> {
-
-                bitmapDrawable = (BitmapDrawable)imageView.getDrawable();
+                bitmapDrawable = (BitmapDrawable) imageView.getDrawable();
                 saveImage = bitmapDrawable.getBitmap();
                 saveToInternalStorage(saveImage);
             });
         }
     }
-    private String saveToInternalStorage(Bitmap bitmapImage){
+
+    private String saveToInternalStorage(Bitmap bitmapImage) {
         ContextWrapper cw = new ContextWrapper(getApplicationContext());
-        // path to /data/data/yourapp/app_data/imageDir
+        // path to /data/data/yourapp/app_data/image
         File directory = cw.getDir("image", Context.MODE_PRIVATE);
         // Create imageDir
-        File mypath=new File(directory,date+".jpg");
-
+        File mypath = new File(directory, date + ".jpg");
         FileOutputStream fos = null;
+
         try {
-            fos = new FileOutputStream(mypath);
-            // Use the compress method on the BitMap object to write image to the OutputStream
-            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            if (!mypath.exists()) {
+                fos = new FileOutputStream(mypath);
+                // Use the compress method on the BitMap object to write image to the OutputStream
+                bitmapImage.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                //add the data to databse by this line
+                db.inserData(date,imageURL,hdImageURL);
+                Toast.makeText(ShowNasaImage.this, "Added", Toast.LENGTH_LONG).show();
+            }
+            else {
+                Toast.makeText(ShowNasaImage.this, "Already Exist", Toast.LENGTH_LONG).show();
+            }
+            fos.flush();
+            fos.close();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            try {
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
         return directory.getAbsolutePath();
     }
+
+
 }

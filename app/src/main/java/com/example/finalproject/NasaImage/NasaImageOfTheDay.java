@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.NasaImage;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -16,6 +16,7 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.finalproject.R;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Calendar;
@@ -89,6 +90,8 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
             case R.id.MainPage:
                 break;
             case R.id.FavouriteList:
+                Intent intent = new Intent(NasaImageOfTheDay.this,ImagesList.class);
+                startActivity(intent);
                 break;
             case R.id.SearchForPictures:
                 break;
