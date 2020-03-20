@@ -1,6 +1,11 @@
 package com.example.finalproject.NasaImage;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -10,12 +15,16 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.finalproject.R;
+import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
@@ -30,7 +39,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class ShowNasaImage extends AppCompatActivity {
+public class ShowNasaImage extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener{
     private Intent intent;
     private String date, hdImageURL, imageURL;
     private Button addFav;
@@ -59,6 +68,16 @@ public class ShowNasaImage extends AppCompatActivity {
         callJson.execute();
         db = new DatabaseNasaImage(this);
 
+        Toolbar tBar = (Toolbar) findViewById(R.id.toolbar);
+        //For NavigationDrawer:
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
+                drawer, tBar, R.string.open, R.string.close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
     }
 
@@ -97,9 +116,9 @@ public class ShowNasaImage extends AppCompatActivity {
         protected void onPostExecute(String s) {
             Picasso.with(ShowNasaImage.this).load(imageURL).into(imageView);
 
-            dateImage.setText(date);
-            urlImage.setText(imageURL);
-            hdUrlImage.setText(hdImageURL);
+            dateImage.setText("Date: "+date);
+            urlImage.setText("URL: "+imageURL);
+            hdUrlImage.setText("HDURL: "+hdImageURL);
             addFav.setOnClickListener(add -> {
                 bitmapDrawable = (BitmapDrawable) imageView.getDrawable();
                 saveImage = bitmapDrawable.getBitmap();
@@ -136,5 +155,31 @@ public class ShowNasaImage extends AppCompatActivity {
         return directory.getAbsolutePath();
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+        switch(item.getItemId())
+        {
+            case R.id.MainPage:
+                break;
+            case R.id.FavouriteList:
+                Intent intent = new Intent(ShowNasaImage.this,ImagesList.class);
+                startActivity(intent);
+                break;
+
+        }
+
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        return false;
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.items, menu);
+
+        return true;
+    }
 }

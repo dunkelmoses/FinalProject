@@ -74,7 +74,6 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
             clickHere.setOnClickListener(c -> {
                 if (date!=null) {
                     intent = new Intent(NasaImageOfTheDay.this, ShowNasaImage.class);
-                    intent = new Intent(NasaImageOfTheDay.this, ImagesList.class);
                     intent.putExtra("date", date);
                     startActivity(intent);
                 }
