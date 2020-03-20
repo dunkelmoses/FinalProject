@@ -3,19 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
+    <item android:id="@+id/help"
+        android:title="help"
+        android:icon="@drawable/helpicon"
+        app:showAsAction="always"
+        android:orderInCategory="400"
+        />
+
     <item android:id="@+id/MainPage"
         android:title="MainPage"
+        android:icon="@drawable/homeicon"
         android:orderInCategory="10"
         app:showAsAction="never"/>
 
     <item android:id="@+id/FavouriteList"
         android:title="Favourite List"
         android:orderInCategory="20"
+        android:icon="@drawable/hearticon"
         app:showAsAction="never"/>
 
-    <item android:id="@+id/SearchForPictures"
-        android:title="Search For Pictures"
-        android:orderInCategory="20"
-        app:showAsAction="never"/>
+
 
 </menu>

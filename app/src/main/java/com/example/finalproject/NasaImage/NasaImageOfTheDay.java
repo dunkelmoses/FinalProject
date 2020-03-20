@@ -10,6 +10,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -40,7 +42,6 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
         clickHere = findViewById(R.id.ClickToSee);
 
         Toolbar tBar = (Toolbar) findViewById(R.id.toolbar);
-
         //For NavigationDrawer:
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
@@ -73,6 +74,7 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
             clickHere.setOnClickListener(c -> {
                 if (date!=null) {
                     intent = new Intent(NasaImageOfTheDay.this, ShowNasaImage.class);
+                    intent = new Intent(NasaImageOfTheDay.this, ImagesList.class);
                     intent.putExtra("date", date);
                     startActivity(intent);
                 }
@@ -93,8 +95,6 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
                 Intent intent = new Intent(NasaImageOfTheDay.this,ImagesList.class);
                 startActivity(intent);
                 break;
-            case R.id.SearchForPictures:
-                break;
 
         }
 
@@ -102,5 +102,13 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
         drawerLayout.closeDrawer(GravityCompat.START);
 
         return false;
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.items, menu);
+
+        return true;
     }
 }

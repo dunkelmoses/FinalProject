@@ -28,13 +28,20 @@
                 android:id="@+id/EnterTheDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Enter The Date" />
+                android:text="Enter The Date"
+                android:layout_gravity="center"
+
+                />
 
             <TextView
                 android:id="@+id/DateTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:layout_gravity="center"
+                android:paddingBottom="50dp"
+                android:paddingTop="30dp"
+                android:hint="@string/date"
+                android:textSize="15dp"
                 />
 
             <Button
@@ -42,8 +49,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/DateTextView"
+                android:layout_gravity="center"
                 android:layout_centerHorizontal="true"
-                android:text="Click here to see the picture" />
+                android:text="@string/Confirm" />
+
         </LinearLayout>
 
         <com.google.android.material.navigation.NavigationView

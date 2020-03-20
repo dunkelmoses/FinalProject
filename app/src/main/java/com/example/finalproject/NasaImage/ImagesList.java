@@ -1,9 +1,11 @@
 package com.example.finalproject.NasaImage;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -30,9 +32,12 @@ public class ImagesList extends AppCompatActivity {
     SQLiteDatabase db;
     DatabaseNasaImage Mydb;
     TextView textView;
+    TextView viewDate;
     ArrayList<ContactNasaImages> contactsList = new ArrayList<>();
     MyOwnAdapter adapter;
     Context context;
+    String date;
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +47,14 @@ public class ImagesList extends AppCompatActivity {
         Mydb = new DatabaseNasaImage(this);
         loadDataFromDatabase();
 
+        intent = getIntent();
+        date = intent.getStringExtra("date");
+
         adapter = new MyOwnAdapter();
         theList.setAdapter(adapter);
+        theList.setOnItemClickListener(( parent,  view,  position,  id) -> {
+            showContact( position );
+        });
     }
 
     private void loadDataFromDatabase()
@@ -97,21 +108,9 @@ public class ImagesList extends AppCompatActivity {
             //get the TextViews
 
             ImageView rowUrl = (ImageView) newView.findViewById(R.id.imageNasa);
-            TextView textView = (TextView) newView.findViewById(R.id.date);
-            textView.setText(thisRow.getDate());
-
-//                Picasso.with(ImagesList.this)
-//                        .load(thisRow.getRegUrl())
-//                        .centerCrop()
-//                        .fit()
-//                        .into(rowUrl);
+            viewDate = (TextView) newView.findViewById(R.id.date);
+            viewDate.setText(thisRow.getDate());
             Picasso.with(ImagesList.this).load(thisRow.getRegUrl()).into(rowUrl);
-
-
-            //update the text fields:
-//            rowUrl.setText("id:" + thisRow.getRegUrl());
-//            rowUrl.setImageDrawable(thisRow.getRegUrl());
-            //return the row:
             return newView;
         }
 
@@ -119,5 +118,37 @@ public class ImagesList extends AppCompatActivity {
         public long getItemId(int position) {
             return getItem(position).getId();
         }
+    }
+
+    protected void deleteContact(ContactNasaImages c)
+    {
+        db.delete(DatabaseNasaImage.TABLE_NAME, DatabaseNasaImage.COL_ID + "= ?", new String[] {Long.toString(c.getId())});
+    }
+    protected  void showContact(int position){
+
+        File file = new File(getPackageName());
+        String x = "/data/data"+file.getAbsolutePath()+"/app_image/";
+        ContactNasaImages selectedContact = contactsList.get(position);
+        View contact_view = getLayoutInflater().inflate(R.layout.nasa_image_edit, null);
+        String pathDeleteImage = x + viewDate.getText().toString()+".jpg";
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("You clicked on item " + (position+1))
+                .setMessage("Would you like to delete the picture?" + pathDeleteImage)
+                .setView(contact_view) //add the 3 edit texts showing the contact information
+//                .setPositiveButton("Update", (click, b) -> {
+////                    selectedContact.update(rowName.getText().toString(), rowEmail.getText().toString());
+////                    updateContact(selectedContact);
+//                    adapter.notifyDataSetChanged(); //the email and name have changed so rebuild the list
+//                })
+                .setNegativeButton("Delete", (click, b) -> {
+                    deleteContact(selectedContact); //remove the contact from database
+                    contactsList.remove(position); //remove the contact from contact list
+                    adapter.notifyDataSetChanged(); //there is one less item so update the list
+                    File deleteFile = new File(pathDeleteImage);
+                    deleteFile.delete();
+                })
+                .setNeutralButton("dismiss", (click, b) -> { })
+                .create().show();
+
     }
 }
