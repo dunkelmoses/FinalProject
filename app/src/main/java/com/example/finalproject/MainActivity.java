@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         imageButton1.setOnClickListener(imageButton1->
         {
-            Intent intent = new Intent(this,Guardian.class);
+            Intent intent = new Intent(this,Guardian.GuardianMainActivity.class);
             startActivity(intent);
         });
 
