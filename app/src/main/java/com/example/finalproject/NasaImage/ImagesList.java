@@ -20,9 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,18 +37,15 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class ImagesList extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    ListView theList;
-    SQLiteDatabase db;
-    DatabaseNasaImage mydb;
-    TextView textView;
-    TextView viewDate;
-    ArrayList<ContactNasaImages> contactsList = new ArrayList<>();
-    MyOwnAdapter adapter;
-    Context context;
-    String date;
-    Intent intent;
-    Cursor results;
-
+    private ListView theList;
+    private SQLiteDatabase db;
+    private DatabaseNasaImage mydb;
+    private TextView viewDate;
+    private ArrayList<ContactNasaImages> contactsList = new ArrayList<>();
+    private MyOwnAdapter adapter;
+    private String date;
+    private Intent intent;
+    private Cursor results;
     public static final String ITEM_POSITION = "POSITION";
 
     @Override
@@ -234,6 +229,17 @@ public class ImagesList extends AppCompatActivity implements NavigationView.OnNa
 
             case R.id.help:
                 Toast.makeText(ImagesList.this,"This Project Was Made By EINSTEIN",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.BBC:
+                Toast.makeText(ImagesList.this,"This Project Was Made By LUFFY",Toast.LENGTH_LONG).show();
+
+                break;
+            case R.id.GUADRIAN:
+                Toast.makeText(ImagesList.this,"This Project Was Made By NARUTO",Toast.LENGTH_LONG).show();
+
+                break;
+            case R.id.NASALANGLAT:
+                Toast.makeText(ImagesList.this,"This Project Was Made By ONE FOR ALL",Toast.LENGTH_LONG).show();
                 break;
         }
         return true;

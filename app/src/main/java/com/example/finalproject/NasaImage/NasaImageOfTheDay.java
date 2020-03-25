@@ -40,7 +40,6 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nasa_image_of_the_day);
-        //findUrlImage = findViewById(R.id.findUrlImage);
         showDate = findViewById(R.id.DateTextView);
         enterDate = findViewById(R.id.EnterTheDate);
         clickHere = findViewById(R.id.ClickToSee);
@@ -140,10 +139,20 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
                 break;
             case R.id.SearchImage:
                 Toast.makeText(NasaImageOfTheDay.this,"This Project Was Made By BATMAN",Toast.LENGTH_LONG).show();
-
                 break;
             case R.id.help:
                 Toast.makeText(NasaImageOfTheDay.this,"This Project Was Made By EINSTEIN",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.BBC:
+                Toast.makeText(NasaImageOfTheDay.this,"This Project Was Made By LUFFY",Toast.LENGTH_LONG).show();
+
+                break;
+            case R.id.GUADRIAN:
+                Toast.makeText(NasaImageOfTheDay.this,"This Project Was Made By NARUTO",Toast.LENGTH_LONG).show();
+
+                break;
+            case R.id.NASALANGLAT:
+                Toast.makeText(NasaImageOfTheDay.this,"This Project Was Made By ONE FOR ALL",Toast.LENGTH_LONG).show();
                 break;
         }
         return true;

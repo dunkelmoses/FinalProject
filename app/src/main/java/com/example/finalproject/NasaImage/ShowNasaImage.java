@@ -47,13 +47,11 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
     private Intent intent;
     private String date, hdImageURL, imageURL,explanation;
     private Button addFav;
-    private Button backTo;
     private Bitmap saveImage;
     private BitmapDrawable bitmapDrawable;
     private ImageView imageView;
     private TextView dateImage, urlImage, hdUrlImage;
-    public static final String COL_EXPL = "EXPL";
-    DatabaseNasaImage db;
+    private DatabaseNasaImage db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +84,7 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
 
     public class CallJson extends AsyncTask<String, Integer, String> {
         String result;
-        Bitmap image;
+
 
         @Override
         protected String doInBackground(String... strings) {
@@ -145,7 +143,7 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
                 // Use the compress method on the BitMap object to write image to the OutputStream
                 bitmapImage.compress(Bitmap.CompressFormat.JPEG, 100, fos);
                 //add the data to databse by this line
-                db.inserData(date,imageURL,hdImageURL,explanation);
+                db.inserData(date,imageURL,hdImageURL);
                 Toast.makeText(ShowNasaImage.this, "Added", Toast.LENGTH_LONG).show();
             }
             else {
@@ -172,8 +170,24 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
                 Intent intent = new Intent(ShowNasaImage.this,ImagesList.class);
                 startActivity(intent);
                 break;
+            case R.id.SearchImage:
+                Intent search = new Intent(ShowNasaImage.this,NasaImageOfTheDay.class);
+                startActivity(search);
+                break;
             case R.id.help:
                 Toast.makeText(ShowNasaImage.this,"This Project Was Made By Batman",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.BBC:
+                Intent bbc = new Intent(ShowNasaImage.this, BBCNEWS.class);
+                startActivity(bbc);
+                break;
+            case R.id.GUADRIAN:
+                Intent gardian = new Intent(ShowNasaImage.this, Guardian.class);
+                startActivity(gardian);
+                break;
+            case R.id.NASALANGLAT:
+                Intent nasaLongLat = new Intent(ShowNasaImage.this, NasaDatabase.class);
+                startActivity(nasaLongLat);
                 break;
 
         }
@@ -202,16 +216,15 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
                 Toast.makeText(ShowNasaImage.this,"This Project Was Made By EINSTEIN",Toast.LENGTH_LONG).show();
                 break;
             case R.id.BBC:
-                Intent bbc = new Intent(ShowNasaImage.this, BBCNEWS.class);
-                startActivity(bbc);
+                Toast.makeText(ShowNasaImage.this,"This Project Was Made By LUFFY",Toast.LENGTH_LONG).show();
+
                 break;
             case R.id.GUADRIAN:
-                Intent gardian = new Intent(ShowNasaImage.this, Guardian.class);
-                startActivity(gardian);
+                Toast.makeText(ShowNasaImage.this,"This Project Was Made By NARUTO",Toast.LENGTH_LONG).show();
+
                 break;
             case R.id.NASALANGLAT:
-                Intent nasaLongLat = new Intent(ShowNasaImage.this, NasaDatabase.class);
-                startActivity(nasaLongLat);
+                Toast.makeText(ShowNasaImage.this,"This Project Was Made By ONE FOR ALL",Toast.LENGTH_LONG).show();
                 break;
         }
         return true;
