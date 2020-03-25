@@ -28,6 +28,22 @@
         android:icon="@drawable/hearticon"
         app:showAsAction="never"/>
 
+    <item android:id="@+id/BBC"
+        android:title="BBC"
+        android:orderInCategory="30"
+        android:icon="@drawable/bbcicon"
+        app:showAsAction="never"/>
 
+    <item android:id="@+id/GUADRIAN"
+        android:title="Guardian"
+        android:orderInCategory="40"
+        android:icon="@drawable/guadrianicon"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/NASALANGLAT"
+        android:title="NASA"
+        android:orderInCategory="50"
+        android:icon="@drawable/nasaicon"
+        app:showAsAction="never"/>
 
 </menu>

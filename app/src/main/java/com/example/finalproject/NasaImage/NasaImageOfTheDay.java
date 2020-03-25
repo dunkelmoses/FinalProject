@@ -18,7 +18,10 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.finalproject.BBCNEWS;
+import com.example.finalproject.Guardian;
 import com.example.finalproject.MainActivity;
+import com.example.finalproject.NasaDatabase;
 import com.example.finalproject.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -101,6 +104,21 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
                 Intent search = new Intent(NasaImageOfTheDay.this,NasaImageOfTheDay.class);
                 startActivity(search);
                 break;
+            case R.id.help:
+                Toast.makeText(NasaImageOfTheDay.this,"This Project Was Made By Batman",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.BBC:
+                Intent bbc = new Intent(NasaImageOfTheDay.this, BBCNEWS.class);
+                startActivity(bbc);
+                break;
+            case R.id.GUADRIAN:
+                Intent gardian = new Intent(NasaImageOfTheDay.this, Guardian.class);
+                startActivity(gardian);
+                break;
+            case R.id.NASALANGLAT:
+                Intent nasaLongLat = new Intent(NasaImageOfTheDay.this, NasaDatabase.class);
+                startActivity(nasaLongLat);
+                break;
         }
 
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
@@ -109,6 +127,29 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
         return false;
     }
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //Look at your menu XML file. Put a case for every id in that file:
+        switch(item.getItemId())
+        {
+            //what to do when the menu item is selected:
+            case R.id.MainPage:
+                Toast.makeText(NasaImageOfTheDay.this,"This Project Was Made By WRAITH",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.FavouriteList:
+                Toast.makeText(NasaImageOfTheDay.this,"This Project Was Made By CAUSTIC",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.SearchImage:
+                Toast.makeText(NasaImageOfTheDay.this,"This Project Was Made By BATMAN",Toast.LENGTH_LONG).show();
+
+                break;
+            case R.id.help:
+                Toast.makeText(NasaImageOfTheDay.this,"This Project Was Made By EINSTEIN",Toast.LENGTH_LONG).show();
+                break;
+        }
+        return true;
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
@@ -116,4 +157,5 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
 
         return true;
     }
+
 }

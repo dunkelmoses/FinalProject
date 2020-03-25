@@ -23,7 +23,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.finalproject.BBCNEWS;
+import com.example.finalproject.Guardian;
 import com.example.finalproject.MainActivity;
+import com.example.finalproject.NasaDatabase;
 import com.example.finalproject.R;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
@@ -42,16 +45,15 @@ import java.util.ArrayList;
 
 public class ShowNasaImage extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener{
     private Intent intent;
-    private String date, hdImageURL, imageURL;
+    private String date, hdImageURL, imageURL,explanation;
     private Button addFav;
     private Button backTo;
     private Bitmap saveImage;
     private BitmapDrawable bitmapDrawable;
     private ImageView imageView;
-    private OutputStream outputStream;
     private TextView dateImage, urlImage, hdUrlImage;
+    public static final String COL_EXPL = "EXPL";
     DatabaseNasaImage db;
-    ArrayList<String> arrayList ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +109,7 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
                 JSONObject jObject = new JSONObject(result);
                 imageURL = jObject.getString("url");
                 hdImageURL = jObject.getString("hdurl");
+                explanation = jObject.getString("explanation");
 
             } catch (Exception e) {
             }
@@ -142,7 +145,7 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
                 // Use the compress method on the BitMap object to write image to the OutputStream
                 bitmapImage.compress(Bitmap.CompressFormat.JPEG, 100, fos);
                 //add the data to databse by this line
-                db.inserData(date,imageURL,hdImageURL);
+                db.inserData(date,imageURL,hdImageURL,explanation);
                 Toast.makeText(ShowNasaImage.this, "Added", Toast.LENGTH_LONG).show();
             }
             else {
@@ -169,16 +172,49 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
                 Intent intent = new Intent(ShowNasaImage.this,ImagesList.class);
                 startActivity(intent);
                 break;
-            case R.id.SearchImage:
-                Intent search = new Intent(ShowNasaImage.this,NasaImageOfTheDay.class);
-                startActivity(search);
+            case R.id.help:
+                Toast.makeText(ShowNasaImage.this,"This Project Was Made By Batman",Toast.LENGTH_LONG).show();
                 break;
+
         }
 
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         drawerLayout.closeDrawer(GravityCompat.START);
 
         return false;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //Look at your menu XML file. Put a case for every id in that file:
+        switch(item.getItemId())
+        {
+            //what to do when the menu item is selected:
+            case R.id.MainPage:
+                Toast.makeText(ShowNasaImage.this,"This Project Was Made By WRAITH",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.FavouriteList:
+                Toast.makeText(ShowNasaImage.this,"This Project Was Made By CAUSTIC",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.SearchImage:
+                Toast.makeText(ShowNasaImage.this,"This Project Was Made By BATMAN",Toast.LENGTH_LONG).show();
+
+            case R.id.help:
+                Toast.makeText(ShowNasaImage.this,"This Project Was Made By EINSTEIN",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.BBC:
+                Intent bbc = new Intent(ShowNasaImage.this, BBCNEWS.class);
+                startActivity(bbc);
+                break;
+            case R.id.GUADRIAN:
+                Intent gardian = new Intent(ShowNasaImage.this, Guardian.class);
+                startActivity(gardian);
+                break;
+            case R.id.NASALANGLAT:
+                Intent nasaLongLat = new Intent(ShowNasaImage.this, NasaDatabase.class);
+                startActivity(nasaLongLat);
+                break;
+        }
+        return true;
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -188,4 +224,5 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
 
         return true;
     }
+
 }

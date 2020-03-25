@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NasaImage.ImagesList"></activity>
+        <activity android:name=".NasaImage.Empty"></activity>
+        <activity android:name=".NasaImage.ImagesList" />
         <activity android:name=".NasaImage.ShowNasaImage" />
         <activity android:name=".BBCNEWS" />
         <activity android:name=".NasaImage.NasaImageOfTheDay" />
