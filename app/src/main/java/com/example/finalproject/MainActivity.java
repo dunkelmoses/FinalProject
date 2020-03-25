@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 
+import com.example.finalproject.bbc.BBCMainActivity;
+
 public class MainActivity extends AppCompatActivity {
     ImageButton imageButton1,imageButton2,imageButton3,imageButton4;
     @Override
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         imageButton1.setOnClickListener(imageButton1->
         {
-            Intent intent = new Intent(this,Guardian.GuardianMainActivity.class);
+            Intent intent = new Intent(this, com.example.finalproject.Guardian.GuardianMainActivity.class);
             startActivity(intent);
         });
 
@@ -38,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         imageButton4.setOnClickListener(imageButton1->
         {
-            Intent intent = new Intent(this,BBCNEWS.class);
+            Intent intent = new Intent(this, BBCMainActivity.class);
             startActivity(intent);
         });
     }

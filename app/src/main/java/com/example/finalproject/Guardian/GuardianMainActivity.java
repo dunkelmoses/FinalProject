@@ -1,4 +1,4 @@
-package Guardian;
+package com.example.finalproject.Guardian;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,10 +14,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.example.finalproject.BBCNEWS;
 import com.example.finalproject.NasaDatabase;
 import com.example.finalproject.NasaImageOfTheDay;
 import com.example.finalproject.R;
+import com.example.finalproject.bbc.BBCMainActivity;
 import com.google.android.material.navigation.NavigationView;
 
 public class GuardianMainActivity extends AppCompatActivity {
@@ -72,7 +72,7 @@ public class GuardianMainActivity extends AppCompatActivity {
                         startActivity(intent2);
                         break;
                     case R.id.drawerMenuBBCNews:
-                        Intent intent3 = new Intent(GuardianMainActivity.this, BBCNEWS.class);
+                        Intent intent3 = new Intent(GuardianMainActivity.this, BBCMainActivity.class);
                         startActivity(intent3);
                         break;
                 }
@@ -104,7 +104,7 @@ public class GuardianMainActivity extends AppCompatActivity {
                 startActivity(intent2);
                 return true;
             case R.id.menuBBC:
-                Intent intent3 = new Intent(this, BBCNEWS.class);
+                Intent intent3 = new Intent(this, BBCMainActivity.class);
                 startActivity(intent3);
                 return true;
             case R.id.menuHelp:

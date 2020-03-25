@@ -11,15 +11,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".bbc.BBCDetailActivity"
+            android:parentActivityName=".bbc.BBCMainActivity"/>
         <activity
-            android:name="Guardian.GuardianDetailActivity"
+            android:name=".Guardian.GuardianDetailActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name=".ShowNasaImage"></activity>
         <activity android:name=".NasaImageOfTheDay" />
         <activity android:name=".NasaDatabase" />
+
         <activity
-            android:name="Guardian.GuardianMainActivity"
+            android:name=".bbc.BBCMainActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Guardian.GuardianMainActivity"
             android:theme="@style/AppTheme.NoActionBar"  />
         <activity android:name=".MainActivity">
             <intent-filter>
