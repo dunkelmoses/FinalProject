@@ -8,13 +8,16 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +38,7 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
     private Button clickHere;
     private Intent intent;
     private DatePickerDialog datePickerDialog;
+    private SharedPreferences prefs = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,11 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
         showDate = findViewById(R.id.DateTextView);
         enterDate = findViewById(R.id.EnterTheDate);
         clickHere = findViewById(R.id.ClickToSee);
+
+        prefs = getSharedPreferences("FileName", Context.MODE_PRIVATE);
+        String savedString = prefs.getString("date", "reserve not found");
+        TextView typeField = findViewById(R.id.DateTextView);
+        typeField.setText(savedString);
 
         Toolbar tBar = (Toolbar) findViewById(R.id.toolbar);
         //For NavigationDrawer:
@@ -56,6 +65,7 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
         navigationView.setNavigationItemSelectedListener(this);
 
         enterDate.setOnClickListener(d -> {
+
             datePickerDialog = new DatePickerDialog(
                     this,
                     new DatePickerDialog.OnDateSetListener() {
@@ -63,7 +73,7 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
                         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                             date = year + "-" + month + "-" + dayOfMonth;
                             showDate.setText("The date you entered is : " + date);
-
+                            saveSharedPrefs("The date you entered last time was "+ date);
                         }
                     },
                     Calendar.getInstance().get(Calendar.YEAR),
@@ -166,5 +176,10 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
 
         return true;
     }
-
+    private void saveSharedPrefs(String stringToSave)
+    {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("date", stringToSave);
+        editor.commit();
+    }
 }
