@@ -1,5 +1,6 @@
 package com.example.finalproject.NasaLonLat;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -54,6 +55,7 @@ public class NasaImageryDatabase extends AppCompatActivity implements Navigation
         editLat.setText(savedString2);
 
         Toolbar tBar = (Toolbar) findViewById(R.id.toolbar);
+        tBar.setTitle("Nasa Imagery");
         //For NavigationDrawer:
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
@@ -148,7 +150,7 @@ public class NasaImageryDatabase extends AppCompatActivity implements Navigation
                 Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By Team3",Toast.LENGTH_LONG).show();
                 break;
             case R.id.help:
-                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By Team4",Toast.LENGTH_LONG).show();
+                help();
                 break;
             case R.id.BBC:
                 Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By Team5",Toast.LENGTH_LONG).show();
@@ -170,5 +172,20 @@ public class NasaImageryDatabase extends AppCompatActivity implements Navigation
         editor.putString("Long", stringToSave1);
         editor.putString("Lat", stringToSave2);
         editor.commit();
+    }
+
+    private void help(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("This is help")
+                .setMessage("- If you want \n" +
+                        "- to go back \n" +
+                        "- click the arrow \n" +
+                        "- in the bottom left" +
+                        " - corner")
+                .setPositiveButton("OK", (click, b) -> {
+
+                })
+
+                .create().show();
     }
 }
