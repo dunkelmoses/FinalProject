@@ -8,7 +8,8 @@ import com.example.finalproject.BBCNEWS;
 import com.example.finalproject.Guardian;
 import com.example.finalproject.MainActivity;
 import com.example.finalproject.NasaImageOfTheDay;
-
+import android.content.Context;
+import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -34,6 +35,7 @@ public class NasaImageryDatabase extends AppCompatActivity implements Navigation
     private Button enter;
     private final String SEND_LAT = "LAT";
     private final String SEND_LON = "LON";
+    private SharedPreferences prefs = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,14 @@ public class NasaImageryDatabase extends AppCompatActivity implements Navigation
         editLong = findViewById(R.id.EditLon);
         editLat = findViewById(R.id.EditLat);
         enter = findViewById(R.id.EnterTheData);
+
+        prefs = getSharedPreferences("FileName", Context.MODE_PRIVATE);
+        String savedString1 = prefs.getString("Long", "");
+        String savedString2 = prefs.getString("Lat", "");
+
+        editLong.setText(savedString1);
+        editLat.setText(savedString2);
+
         Toolbar tBar = (Toolbar) findViewById(R.id.toolbar);
         //For NavigationDrawer:
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -56,6 +66,7 @@ public class NasaImageryDatabase extends AppCompatActivity implements Navigation
         enter.setOnClickListener(d -> {
             String dataLat = editLat.getText().toString();
             String dataLon = editLong.getText().toString();
+            saveSharedPrefs(dataLon,dataLat);
 
             if (dataLat!=null && dataLat != "" && !dataLat.isEmpty()
                     && dataLon!=null && dataLon != "" && !dataLon.isEmpty()
@@ -151,5 +162,12 @@ public class NasaImageryDatabase extends AppCompatActivity implements Navigation
                 break;
         }
         return true;
+    }
+    private void saveSharedPrefs(String stringToSave1 , String stringToSave2)
+    {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("Long", stringToSave1);
+        editor.putString("Lat", stringToSave2);
+        editor.commit();
     }
 }
