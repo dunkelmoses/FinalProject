@@ -1,4 +1,9 @@
 package Guardian;
+/**
+ * Page to display details of an article and save article
+ * Author: Hicham Soujae
+ */
+
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,8 +22,18 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import com.example.finalproject.R;
 import com.google.android.material.snackbar.Snackbar;
 
-public class GuardianDetailActivity extends AppCompatActivity {
+/**
+ * display detailed information about an article
+ * allow user to save to article
+ * send saved article information to database
+ */
 
+public class GuardianDetailActivity extends AppCompatActivity {
+    /**
+     * get article information from news main page
+     * Connect and save to database     *
+     * @param savedInstanceState
+     */
     Article article;
     boolean isSaved;
     GuardianDB guardianDB;

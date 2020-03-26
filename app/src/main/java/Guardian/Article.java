@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * This class holds the details of an article
- *
+ *Author : Hicham Soujae
  * To pass it through activity using intents it is implementing
  * Serializable interface
  * */

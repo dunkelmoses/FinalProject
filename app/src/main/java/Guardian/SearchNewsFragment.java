@@ -91,9 +91,16 @@ public class SearchNewsFragment extends Fragment {
         return view;
     }
 
-
+    /**
+     * class used for Async Task that gets JSON Object from web pages
+     */
     class SearchArticle extends AsyncTask<Void, Void, String> {
 
+        /**
+         * connect to web pages using URL and obtain JSON objects
+         * @param strings
+         * @return strings pulled from JSON objects
+         */
         String link = "https://content.guardianapis.com/search?api-key=1fb36b70-1588-4259-b703-2570ea1fac6a&q=";
         String query;
         SearchArticle(String query) {
@@ -126,6 +133,10 @@ public class SearchNewsFragment extends Fragment {
             return data;
         }
 
+        /**
+         * Update progress bar, list, and adapter
+         * @param s
+         */
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
