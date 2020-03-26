@@ -125,9 +125,10 @@ public class NasaDisplayImageryDatabase extends AppCompatActivity  implements Na
             if (dateFromUrl != null) {
                 Picasso.with(NasaDisplayImageryDatabase.this).load(urlImage).into(imageView);
 
+
+                lonData.setText("Longitude: " + lon);
+                latData.setText("Latitude: " + lat);
                 dateImage.setText("Date: " + dateFromUrl);
-                lonData.setText("Lon: " + lon);
-                latData.setText("Lat: " + lat);
                 addFav.setOnClickListener(add -> {
                     bitmapDrawable = (BitmapDrawable) imageView.getDrawable();
                     saveImage = bitmapDrawable.getBitmap();
@@ -156,7 +157,7 @@ public class NasaDisplayImageryDatabase extends AppCompatActivity  implements Na
                 bitmapImage.compress(Bitmap.CompressFormat.JPEG, 100, fos);
                 //add the data to databse by this line
                 db.inserData(dateFromUrl,urlImage,lon,lat);
-                Toast.makeText(NasaDisplayImageryDatabase.this, "Added", Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaDisplayImageryDatabase.this, "Image Added", Toast.LENGTH_LONG).show();
             }
             else {
                 Toast.makeText(NasaDisplayImageryDatabase.this, "Already Exist", Toast.LENGTH_LONG).show();
@@ -199,7 +200,7 @@ public class NasaDisplayImageryDatabase extends AppCompatActivity  implements Na
                 startActivity(nasaLongLat);
                 break;
             case R.id.help:
-                Toast.makeText(NasaDisplayImageryDatabase.this,"This Project Was Made By Batman",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaDisplayImageryDatabase.this,"This Project Was Made By ",Toast.LENGTH_LONG).show();
                 break;
         }
 
@@ -224,27 +225,27 @@ public class NasaDisplayImageryDatabase extends AppCompatActivity  implements Na
         {
             //what to do when the menu item is selected:
             case R.id.MainPage:
-                Toast.makeText(NasaDisplayImageryDatabase.this,"This Project Was Made By WRAITH",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaDisplayImageryDatabase.this,"This Project Was Made By Team1",Toast.LENGTH_LONG).show();
                 break;
             case R.id.FavouriteList:
-                Toast.makeText(NasaDisplayImageryDatabase.this,"This Project Was Made By CAUSTIC",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaDisplayImageryDatabase.this,"This Project Was Made By Team2",Toast.LENGTH_LONG).show();
                 break;
             case R.id.SearchImage:
-                Toast.makeText(NasaDisplayImageryDatabase.this,"This Project Was Made By BATMAN",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaDisplayImageryDatabase.this,"This Project Was Made By Team3",Toast.LENGTH_LONG).show();
                 break;
             case R.id.help:
-                Toast.makeText(NasaDisplayImageryDatabase.this,"This Project Was Made By EINSTEIN",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaDisplayImageryDatabase.this,"This Project Was Made By Team4",Toast.LENGTH_LONG).show();
                 break;
             case R.id.BBC:
-                Toast.makeText(NasaDisplayImageryDatabase.this,"This Project Was Made By LUFFY",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaDisplayImageryDatabase.this,"This Project Was Made By Team5",Toast.LENGTH_LONG).show();
 
                 break;
             case R.id.GUADRIAN:
-                Toast.makeText(NasaDisplayImageryDatabase.this,"This Project Was Made By NARUTO",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaDisplayImageryDatabase.this,"This Project Was Made By Team6",Toast.LENGTH_LONG).show();
 
                 break;
             case R.id.NASAIMAGE:
-                Toast.makeText(NasaDisplayImageryDatabase.this,"This Project Was Made By ONE FOR ALL",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaDisplayImageryDatabase.this,"This Project Was Made By Team7",Toast.LENGTH_LONG).show();
                 break;
         }
         return true;

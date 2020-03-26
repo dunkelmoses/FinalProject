@@ -90,7 +90,7 @@ public class NasaImageryDatabase extends AppCompatActivity implements Navigation
                 startActivity(search);
                 break;
             case R.id.help:
-                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By Batman",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By ",Toast.LENGTH_LONG).show();
                 break;
             case R.id.BBC:
                 Intent bbc = new Intent(NasaImageryDatabase.this, BBCNEWS.class);
@@ -127,27 +127,27 @@ public class NasaImageryDatabase extends AppCompatActivity implements Navigation
         {
             //what to do when the menu item is selected:
             case R.id.MainPage:
-                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By WRAITH",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By Team1",Toast.LENGTH_LONG).show();
                 break;
             case R.id.FavouriteList:
-                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By CAUSTIC",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By Team2",Toast.LENGTH_LONG).show();
                 break;
             case R.id.SearchImage:
-                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By BATMAN",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By Team3",Toast.LENGTH_LONG).show();
                 break;
             case R.id.help:
-                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By EINSTEIN",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By Team4",Toast.LENGTH_LONG).show();
                 break;
             case R.id.BBC:
-                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By LUFFY",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By Team5",Toast.LENGTH_LONG).show();
 
                 break;
             case R.id.GUADRIAN:
-                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By NARUTO",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By Team6",Toast.LENGTH_LONG).show();
 
                 break;
             case R.id.NASAIMAGE:
-                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By ONE FOR ALL",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By Team7",Toast.LENGTH_LONG).show();
                 break;
         }
         return true;

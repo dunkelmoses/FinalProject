@@ -50,17 +50,7 @@
                 android:layout_below="@id/lonData"
                 android:id="@+id/latData"/>
 
-            <Button
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/circle"
-                android:id="@+id/AddToFav"
-                android:textSize="30dp"
-                android:text="♡"
-                android:textColor="@color/White"
-                android:layout_alignParentRight="true"
-                />
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -70,6 +60,15 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:textSize="30dp"/>
+
+            <Button
+                android:id="@+id/AddToFav"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text=""
+                android:background="@drawable/ic_favorite_black_24dp"/>
+
+
 
         </RelativeLayout>
 

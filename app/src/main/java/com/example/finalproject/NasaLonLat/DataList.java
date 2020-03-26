@@ -163,7 +163,7 @@ public class DataList extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("You clicked on item " + (position + 1))
-                .setMessage("Would you like to delete this picture? ")
+                .setMessage("Do you want to delete this picture? ")
                 .setView(contact_view) //add the 3 edit texts showing the contact information
                 .setNegativeButton("Delete", (click, b) -> {
                     deleteContact(selectedContact); //remove the contact from database
@@ -172,7 +172,7 @@ public class DataList extends AppCompatActivity {
                     File deleteFile = new File(pathImage);
                     deleteFile.delete();
                 })
-                .setNeutralButton("dismiss", (click, b) -> {
+                .setNeutralButton("Cancel", (click, b) -> {
                 })
                 .create().show();
     }
