@@ -21,8 +21,8 @@
     <string name="date">date:</string>
     <string name="Confirm">confirm</string>
     <string name="ALGONQUIN_COLLEGE">ALGONQUIN COLLEGE</string>
-    <string name="search">Search Image</string>
-    <string name="MainPage">Main Menu</string>
+    <string name="search">Search </string>
+    <string name="MainPage">Main </string>
     <string name="EnterLon">Enter The Longitude</string>
     <string name="EnterLat">Enter The Latitude</string>
 

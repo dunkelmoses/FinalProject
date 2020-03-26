@@ -102,7 +102,7 @@ public class NasaDisplayImageryDatabase extends AppCompatActivity  implements Na
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 InputStream inStream = connection.getInputStream();
 
-                //create a JSON object from the response
+                //create a JSON object
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inStream));
                 StringBuilder sb = new StringBuilder();
 
@@ -155,14 +155,14 @@ public class NasaDisplayImageryDatabase extends AppCompatActivity  implements Na
         try {
             if (!mypath.exists()) {
                 fos = new FileOutputStream(mypath);
-                // Use the compress method on the BitMap object to write image to the OutputStream
+                // Use the compress method on the BitMap
                 bitmapImage.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-                //add the data to databse by this line
+                //add the data to databse
                 db.inserData(dateFromUrl,urlImage,lon,lat);
                 Toast.makeText(NasaDisplayImageryDatabase.this, "Image Added", Toast.LENGTH_LONG).show();
             }
             else {
-                Toast.makeText(NasaDisplayImageryDatabase.this, "Already Exist", Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaDisplayImageryDatabase.this, "Image Exist", Toast.LENGTH_LONG).show();
             }
             fos.flush();
             fos.close();
@@ -222,10 +222,10 @@ public class NasaDisplayImageryDatabase extends AppCompatActivity  implements Na
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        //Look at your menu XML file. Put a case for every id in that file:
+        //Put a case for every id in that file:
         switch(item.getItemId())
         {
-            //what to do when the menu item is selected:
+            //what to do when the menu item selected
             case R.id.MainPage:
                 Toast.makeText(NasaDisplayImageryDatabase.this,"This Project Was Made By Team1",Toast.LENGTH_LONG).show();
                 break;
