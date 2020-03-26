@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         imageButton2.setOnClickListener(imageButton1->
         {
-            Intent intent = new Intent(this, NasaImageryDatabase.class);
+            Intent intent = new Intent(this, NasaImageOfTheDay.class);
             startActivity(intent);
         });
 

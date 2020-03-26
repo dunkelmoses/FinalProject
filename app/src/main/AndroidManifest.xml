@@ -13,7 +13,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NasaImageOfTheDay"></activity>
         <activity android:name=".NasaLonLat.DataList" />
         <activity android:name=".NasaLonLat.DatabaseNasaImagery" />
         <activity android:name=".NasaLonLat.Empty" />

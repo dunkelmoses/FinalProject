@@ -10,6 +10,8 @@ public class NasaImageOfTheDay extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nasa_image_of_the_day2);
+        setContentView(R.layout.activity_nasa_image_of_the_day);
     }
 }
+
+
