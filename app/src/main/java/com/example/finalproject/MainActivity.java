@@ -1,11 +1,9 @@
 package com.example.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
-
 import com.example.finalproject.NasaLonLat.NasaImageryDatabase;
 
 public class MainActivity extends AppCompatActivity {

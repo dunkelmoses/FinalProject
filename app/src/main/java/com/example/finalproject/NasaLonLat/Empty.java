@@ -1,7 +1,6 @@
 package com.example.finalproject.NasaLonLat;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-
 import com.example.finalproject.R;
 
 public class Empty extends AppCompatActivity {
