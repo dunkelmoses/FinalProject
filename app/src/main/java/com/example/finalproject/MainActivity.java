@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 
+import com.example.finalproject.NasaLonLat.NasaImageryDatabase;
+
 public class MainActivity extends AppCompatActivity {
     ImageButton imageButton1,imageButton2,imageButton3,imageButton4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
 
         imageButton2.setOnClickListener(imageButton1->
         {
-            Intent intent = new Intent(this,NasaImageOfTheDay.class);
+            Intent intent = new Intent(this, NasaImageryDatabase.class);
             startActivity(intent);
         });
 
         imageButton3.setOnClickListener(imageButton1->
         {
-            Intent intent = new Intent(this,NasaDatabase.class);
+            Intent intent = new Intent(this, NasaImageryDatabase.class);
             startActivity(intent);
         });
 

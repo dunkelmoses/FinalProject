@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.finalproject">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,10 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ShowNasaImage"></activity>
+        <activity android:name=".NasaImageOfTheDay"></activity>
+        <activity android:name=".NasaLonLat.DataList" />
+        <activity android:name=".NasaLonLat.DatabaseNasaImagery" />
+        <activity android:name=".NasaLonLat.Empty" />
+        <activity android:name=".NasaLonLat.NasaDisplayImageryDatabase" />
         <activity android:name=".BBCNEWS" />
-        <activity android:name=".NasaImageOfTheDay" />
-        <activity android:name=".NasaDatabase" />
+        <activity android:name=".NasaLonLat.NasaImageryDatabase" />
         <activity android:name=".Guardian" />
         <activity android:name=".MainActivity">
             <intent-filter>
