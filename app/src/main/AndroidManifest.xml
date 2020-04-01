@@ -15,9 +15,6 @@
             android:name="Guardian.GuardianDetailActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".ShowNasaImage"></activity>
-        <activity android:name=".NasaImageOfTheDay" />
-        <activity android:name=".NasaDatabase" />
         <activity
             android:name="Guardian.GuardianMainActivity"
             android:theme="@style/AppTheme.NoActionBar"  />
