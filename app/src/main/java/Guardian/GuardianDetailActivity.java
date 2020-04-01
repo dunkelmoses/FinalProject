@@ -41,9 +41,8 @@ public class GuardianDetailActivity extends AppCompatActivity  {
     CoordinatorLayout cLayout;
 
     /**
-     * This method is used to set the layout for the activity. The user can type what they would like to search for
-     * in the search bar and upon clicking the search button they will be redirected to @class GuardianResults for
-     * the search results.
+     * This method is used to display the result of the search. The user can delete or add listed articles
+     * to a favourite list for viewing later.
      * @param savedInstanceState
      */
     @Override
@@ -120,31 +119,28 @@ public class GuardianDetailActivity extends AppCompatActivity  {
         });
     }
 
+    /**
+     * This method is used to display an alert message when the user want to delete an article
+     * from the favourite list.
+     * @param id
+     */
     private void showAlertDialog(final String id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setPositiveButton(getString(R.string.article_delete_yes), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                guardianDB.deleteArticle(id);
-                isSaved = guardianDB.isSaved(id);
-                Snackbar.make(cLayout, getString(R.string.article_deleted), Snackbar.LENGTH_SHORT).show();
-                String action;
-                if (isSaved) {
-                    action = getString(R.string.action_delete);
-                } else {
-                    action = getString(R.string.action_save);
-                }
-                button5.setText(action);
-                dialog.dismiss();
+        builder.setPositiveButton(getString(R.string.article_delete_yes), (dialog, which) -> {
+            guardianDB.deleteArticle(id);
+            isSaved = guardianDB.isSaved(id);
+            Snackbar.make(cLayout, getString(R.string.article_deleted), Snackbar.LENGTH_SHORT).show();
+            String action;
+            if (isSaved) {
+                action = getString(R.string.action_delete);
+            } else {
+                action = getString(R.string.action_save);
             }
+            button5.setText(action);
+            dialog.dismiss();
         });
 
-        builder.setNegativeButton(getString(R.string.article_delete_no), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+        builder.setNegativeButton(getString(R.string.article_delete_no), (dialog, which) -> dialog.dismiss());
 
         builder.setTitle(getString(R.string.action_delete));
         builder.setMessage(getString(R.string.article_delete_message));

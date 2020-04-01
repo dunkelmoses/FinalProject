@@ -34,11 +34,9 @@ public class GuardianMainActivity extends AppCompatActivity implements Navigatio
     private SearchNewsFragment searchFragment;
 
     /**
-     * This method calls other methods to do what needs to be done. It loads the favorites list from the database,
-     * displays the results list, and allows you to add to your favorites list (or remove if you accidentally added something
-     * you did not). It basically sets an onClickListener and onItemLongClickListener to the ListView, sets up the toolbar and
-     * navigation drawer, and calls appropriate methods for different actions.
-     *
+     * This method is used to set the layout for the activity. The user can type what they would like to search for
+     * in the search bar and upon clicking the search button they will be redirected to @class GuardianDetailActivity for
+     * the search results.
      * @param savedInstanceState
      */
     @Override
