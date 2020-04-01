@@ -28,7 +28,7 @@ import com.google.android.material.snackbar.Snackbar;
  * send saved article information to database
  */
 
-public class GuardianDetailActivity extends AppCompatActivity {
+public class GuardianDetailActivity extends AppCompatActivity  {
     /**
      * get article information from news main page
      * Connect and save to database     *
@@ -40,6 +40,12 @@ public class GuardianDetailActivity extends AppCompatActivity {
     Button button5, button4;
     CoordinatorLayout cLayout;
 
+    /**
+     * This method is used to set the layout for the activity. The user can type what they would like to search for
+     * in the search bar and upon clicking the search button they will be redirected to @class GuardianResults for
+     * the search results.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

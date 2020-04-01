@@ -1,7 +1,14 @@
 package Guardian;
 
+/**
+ * @author Hicham Soujae
+ * @class GuardianMainActivity
+ * @version 2
+ * This class is used with the activity_guardian_main layout.
+ * It displays the list of articles.
+ */
 import android.content.DialogInterface;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,19 +21,26 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.example.finalproject.BBCNEWS;
-import com.example.finalproject.NasaDatabase;
-import com.example.finalproject.NasaImageOfTheDay;
+
+
 import com.example.finalproject.R;
 import com.google.android.material.navigation.NavigationView;
 
-public class GuardianMainActivity extends AppCompatActivity {
+public class GuardianMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
 
     //To use navigation drawer
     private DrawerLayout drawerLayout;
 
     private SearchNewsFragment searchFragment;
 
+    /**
+     * This method calls other methods to do what needs to be done. It loads the favorites list from the database,
+     * displays the results list, and allows you to add to your favorites list (or remove if you accidentally added something
+     * you did not). It basically sets an onClickListener and onItemLongClickListener to the ListView, sets up the toolbar and
+     * navigation drawer, and calls appropriate methods for different actions.
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +66,8 @@ public class GuardianMainActivity extends AppCompatActivity {
 
         //handle click event of navigation
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
@@ -63,18 +79,7 @@ public class GuardianMainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
                                 new SavedNewsFragment()).commit();
                         break;
-                    case R.id.drawerMenuNasaImage:
-                        Intent intent1 = new Intent(GuardianMainActivity.this, NasaImageOfTheDay.class);
-                        startActivity(intent1);
-                        break;
-                    case R.id.drawerMenuNasaEarth:
-                        Intent intent2 = new Intent(GuardianMainActivity.this, NasaDatabase.class);
-                        startActivity(intent2);
-                        break;
-                    case R.id.drawerMenuBBCNews:
-                        Intent intent3 = new Intent(GuardianMainActivity.this, BBCNEWS.class);
-                        startActivity(intent3);
-                        break;
+
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -95,18 +100,7 @@ public class GuardianMainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menuImage:
-                Intent intent1 = new Intent(this, NasaImageOfTheDay.class);
-                startActivity(intent1);
-                return true;
-            case R.id.menuEarth:
-                Intent intent2 = new Intent(this, NasaDatabase.class);
-                startActivity(intent2);
-                return true;
-            case R.id.menuBBC:
-                Intent intent3 = new Intent(this, BBCNEWS.class);
-                startActivity(intent3);
-                return true;
+
             case R.id.menuHelp:
                 showHelpDialog();
                 return true;
@@ -139,5 +133,10 @@ public class GuardianMainActivity extends AppCompatActivity {
             }
         });
         builder.show();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return true;
     }
 }

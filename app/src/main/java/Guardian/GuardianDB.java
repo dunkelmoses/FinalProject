@@ -26,7 +26,11 @@ public class GuardianDB extends SQLiteOpenHelper {
         super(context, "guardianDB", null, 1);
     }
 
-
+    /**
+     * This method creates a table called Favorites to allow storing articles to a favorites list or
+     * removing them.
+     * @param db The name of the database, guardianDB
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "create table " + tableName + "(" +

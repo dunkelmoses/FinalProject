@@ -35,7 +35,9 @@ import java.util.List;
 
 
 
-
+/**
+ * A simple {@link Fragment} subclass.
+ */
 public class SearchNewsFragment extends Fragment {
 
 
@@ -48,6 +50,15 @@ public class SearchNewsFragment extends Fragment {
     private ListArticleAdapter listArticleAdapter;
     private List<Article> articleList;
 
+
+    /**
+     * This method sets up the fragment with all the information and allows the user to click
+     * on the url.
+     * @param inflater The inflater to inflate the fragment.
+     * @param container
+     * @param savedInstanceState
+     * @return The inflated fragment.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -196,12 +207,22 @@ public class SearchNewsFragment extends Fragment {
         }
     }
 
+
+    /**
+     * This method stores what the user last searched for in a file called FileName. It will load
+     * what the user last searched for in the searchbar by default.
+     * @param lastSearched What the user last searched for
+     */
     private void saveToSharedPreferences(String lastSearched){
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("guardianData", Context.MODE_PRIVATE);
         sharedPreferences.edit()
                 .putString("lastSearched",lastSearched).apply();
     }
 
+
+    /**
+     * This method displays a sharedPreference to get the last article search from database
+     */
     private String getLastSearched(){
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("guardianData", Context.MODE_PRIVATE);
         String lastSearched = sharedPreferences.getString("lastSearched","");

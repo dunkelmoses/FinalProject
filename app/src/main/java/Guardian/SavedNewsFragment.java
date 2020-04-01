@@ -16,6 +16,10 @@ import com.example.finalproject.R;
 
 import java.util.List;
 
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
 public class SavedNewsFragment extends Fragment {
 
 
@@ -27,6 +31,15 @@ public class SavedNewsFragment extends Fragment {
     private List<Article> articleList;
     private ListView listView;
 
+
+    /**
+     * This method sets up the fragment with all the information and allows the user to click
+     * on the url.
+     * @param inflater The inflater to inflate the fragment.
+     * @param container
+     * @param savedInstanceState
+     * @return The inflated fragment.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

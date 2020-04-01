@@ -4,17 +4,17 @@
 
     <item
         android:id="@+id/menuImage"
-        android:icon="@drawable/nasa2"
+        android:icon="@drawable/nasa2_icon"
         android:title="Nasa Image"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menuEarth"
-        android:icon="@drawable/nasa1"
+        android:icon="@drawable/nasa1_icon"
         android:title="Nasa Earth"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menuBBC"
-        android:icon="@drawable/bbc"
+        android:icon="@drawable/bbc_icon"
         android:title="BBC News"
         app:showAsAction="ifRoom" />
     <item
