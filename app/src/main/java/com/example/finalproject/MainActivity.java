@@ -20,13 +20,13 @@ public class MainActivity extends AppCompatActivity {
 
         imageButton1.setOnClickListener(imageButton1->
         {
-            Intent intent = new Intent(this,Guardian.class);
+            Intent intent = new Intent(this, GuardianMainActivity.class);
             startActivity(intent);
         });
 
         imageButton2.setOnClickListener(imageButton1->
         {
-            Intent intent = new Intent(this,NasaImageOfTheDay.class);
+            Intent intent = new Intent(this, NasaImageOfTheDay.class);
             startActivity(intent);
         });
 
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         imageButton4.setOnClickListener(imageButton1->
         {
-            Intent intent = new Intent(this,BBCNEWS.class);
+            Intent intent = new Intent(this, BBCMainActivity.class);
             startActivity(intent);
         });
     }
