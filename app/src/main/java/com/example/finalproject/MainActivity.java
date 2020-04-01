@@ -1,10 +1,10 @@
 package com.example.finalproject;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.finalproject.bbc.BBCMainActivity;
 
@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
         imageButton1.setOnClickListener(imageButton1->
         {
-            Intent intent = new Intent(this, com.example.finalproject.Guardian.GuardianMainActivity.class);
-            startActivity(intent);
+           // Intent intent = new Intent(this, com.example.finalproject.Guardian.GuardianMainActivity.class);
+          //  startActivity(intent);
         });
 
         imageButton2.setOnClickListener(imageButton1->

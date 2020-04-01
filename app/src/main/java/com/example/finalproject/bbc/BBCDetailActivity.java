@@ -10,9 +10,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
-
 import com.example.finalproject.R;
 import com.google.android.material.snackbar.Snackbar;
+
 
 public class BBCDetailActivity extends AppCompatActivity {
 

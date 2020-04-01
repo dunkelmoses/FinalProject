@@ -16,8 +16,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-
-import com.example.finalproject.Guardian.GuardianMainActivity;
 import com.example.finalproject.NasaDatabase;
 import com.example.finalproject.NasaImageOfTheDay;
 import com.example.finalproject.R;
@@ -96,8 +94,8 @@ public class BBCMainActivity extends AppCompatActivity implements NavigationView
                         new SavedNewsFragment()).commit();
                 break;
             case R.id.drawerMenuGuardian:
-                Intent intent1 = new Intent(BBCMainActivity.this, GuardianMainActivity.class);
-                startActivity(intent1);
+               // Intent intent1 = new Intent(BBCMainActivity.this, GuardianMainActivity.class);
+              //  startActivity(intent1);
                 break;
             case R.id.drawerMenuNasaImage:
                 Intent intent2 = new Intent(BBCMainActivity.this, NasaImageOfTheDay.class);
@@ -118,7 +116,7 @@ public class BBCMainActivity extends AppCompatActivity implements NavigationView
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menuGuardian:
+           /* case R.id.menuGuardian:
                 Intent intent3 = new Intent(this, GuardianMainActivity.class);
                 startActivity(intent3);
                 return true;
@@ -129,7 +127,7 @@ public class BBCMainActivity extends AppCompatActivity implements NavigationView
             case R.id.menuEarth:
                 Intent intent2 = new Intent(this, NasaDatabase.class);
                 startActivity(intent2);
-                return true;
+                return true; */
             case R.id.menuHelp:
                 viewHelpDialog();
                 return true;
