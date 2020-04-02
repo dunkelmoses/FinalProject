@@ -40,7 +40,7 @@ public class ImagesList extends AppCompatActivity implements NavigationView.OnNa
     private ListView theList;
     private SQLiteDatabase db;
     private DatabaseNasaImage mydb;
-    private TextView viewDate;
+    private TextView viewDate,viewMessage;
     private ArrayList<ContactNasaImages> contactsList = new ArrayList<>();
     private MyOwnAdapter adapter;
     private String date;
@@ -85,13 +85,14 @@ public class ImagesList extends AppCompatActivity implements NavigationView.OnNa
 
         // We want to get all of the columns. Look at MyOpener.java for the definitions:
         String [] columns = {DatabaseNasaImage.COL_ID, DatabaseNasaImage.COL_DATE, DatabaseNasaImage.COL_REGURL
-        ,DatabaseNasaImage.COL_HDURL};
+        ,DatabaseNasaImage.COL_HDURL,DatabaseNasaImage.COL_MESG};
         //query all the results from the database:
         results = db.query(false, DatabaseNasaImage.TABLE_NAME, columns, null, null, null, null, null, null);
 
         //Now the results object has rows of results that match the query.
         //find the column indices:
         int dateColumnIndex = results.getColumnIndex(DatabaseNasaImage.COL_DATE);
+        int messageColumnIndex = results.getColumnIndex(DatabaseNasaImage.COL_MESG);
         int regUrlColumnIndex = results.getColumnIndex(DatabaseNasaImage.COL_REGURL);
         int hdUrlColIndex = results.getColumnIndex(DatabaseNasaImage.COL_HDURL);
         int idColIndex = results.getColumnIndex(DatabaseNasaImage.COL_ID);
@@ -100,12 +101,13 @@ public class ImagesList extends AppCompatActivity implements NavigationView.OnNa
         while(results.moveToNext())
         {
             String date = results.getString(dateColumnIndex);
+            String message = results.getString(messageColumnIndex);
             String regUrl = results.getString(regUrlColumnIndex);
             String hdUrl = results.getString(hdUrlColIndex);
             long id = results.getLong(idColIndex);
 
             //add the new Contact to the array list:
-            contactsList.add(new ContactNasaImages(id, date, regUrl,hdUrl));
+            contactsList.add(new ContactNasaImages(id, date, regUrl,hdUrl,message));
         }
         //At this point, the contactsList array has loaded every row from the cursor.
     }
@@ -127,6 +129,8 @@ public class ImagesList extends AppCompatActivity implements NavigationView.OnNa
             ImageView rowUrl = (ImageView) newView.findViewById(R.id.imageNasa);
             viewDate = (TextView) newView.findViewById(R.id.date);
             viewDate.setText(thisRow.getDate());
+            viewMessage = (TextView) newView.findViewById(R.id.messages);
+            viewMessage.setText(thisRow.getMessage());
             Picasso.with(ImagesList.this).load(thisRow.getRegUrl()).into(rowUrl);
             return newView;
         }
@@ -156,7 +160,6 @@ public class ImagesList extends AppCompatActivity implements NavigationView.OnNa
                 .setView(contact_view) //add the 3 edit texts showing the contact information
                 .setNegativeButton("Delete", (click, b) -> {
                     deleteContact(selectedContact); //remove the contact from database
-                    contactsList.remove(position); //remove the contact from contact list
                     contactsList.remove(position); //remove the contact from contact list
                     adapter.notifyDataSetChanged(); //there is one less item so update the list
                     File deleteFile = new File(pathDeleteImage);
@@ -248,7 +251,7 @@ public class ImagesList extends AppCompatActivity implements NavigationView.OnNa
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.items, menu);
+        inflater.inflate(R.menu.items_nasa_image, menu);
 
         return true;
     }
