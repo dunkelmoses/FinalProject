@@ -38,13 +38,12 @@ import java.net.URL;
 public class NasaDisplayImageryDatabase extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener{
 
     private Intent intent;
-    private String lat, lon;
-    private String urlImage,dateFromUrl;
+    private String lat, lon,imageURL;
     private Button addFav;
     private Bitmap saveImage;
     private BitmapDrawable bitmapDrawable;
     private ImageView imageView;
-    private TextView dateImage, latData, lonData,wrongData;
+    private TextView  latData, lonData,wrongData;
     DatabaseNasaImagery db;
     private final String SEND_LAT = "LAT";
     private final String SEND_LON = "LON";
@@ -54,7 +53,6 @@ public class NasaDisplayImageryDatabase extends AppCompatActivity  implements Na
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nasa_display_imagery);
         imageView = findViewById(R.id.ImageFromUrl);
-        dateImage = findViewById(R.id.dateImage);
         latData = findViewById(R.id.latData);
         lonData = findViewById(R.id.lonData);
         addFav = findViewById(R.id.AddToFav);
@@ -82,34 +80,17 @@ public class NasaDisplayImageryDatabase extends AppCompatActivity  implements Na
     }
 
     public class CallJson extends AsyncTask<String, Integer, String> {
-        String result;
-        Bitmap image;
+        String newLink1,newLink2,newLink3;
 
         @Override
         protected String doInBackground(String... strings) {
-
-            String link1 = "http://dev.virtualearth.net/REST/V1/Imagery/Map/Birdseye/?lat="+",";
-            String link2 = "&lon=";
-            String link3 = "/20?dir=180&ms=500,500&key=AhiAkUp5OJNThWRDqdFnxmsd2SCgIwaFn_k9Q2UEroZ69tQxE6zV1rY5klvlJLne";
+             newLink1 = "https://dev.virtualearth.net/REST/V1/Imagery/Map/Birdseye/";
+             newLink2 = ",";
+             newLink3 = "/20?dir=180&ms=500,500&key=AhiAkUp5OJNThWRDqdFnxmsd2SCgIwaFn_k9Q2UEroZ69tQxE6zV1rY5klvlJLne";
             try {
-                URL url = new URL(link1+lon+link2+lat+link3);
+                URL url = new URL(newLink1+lon+newLink2+lat+newLink3);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 InputStream inStream = connection.getInputStream();
-
-                //create a JSON object
-                BufferedReader reader = new BufferedReader(new InputStreamReader(inStream));
-                StringBuilder sb = new StringBuilder();
-
-                String line = null;
-                while ((line = reader.readLine()) != null) {
-                    sb.append(line + "\n");
-                }
-                result = sb.toString();
-                //now a JSON table:
-                JSONObject jObject = new JSONObject(result);
-                urlImage = jObject.getString("url");
-                dateFromUrl = jObject.getString("date");
-
 
             } catch (Exception e) {
             }
@@ -118,41 +99,34 @@ public class NasaDisplayImageryDatabase extends AppCompatActivity  implements Na
 
         @Override
         protected void onPostExecute(String s) {
-            if (dateFromUrl != null) {
-                Picasso.with(NasaDisplayImageryDatabase.this).load(urlImage).into(imageView);
-
 
                 lonData.setText("Longitude: " + lon);
                 latData.setText("Latitude: " + lat);
-                dateImage.setText("Date: " + dateFromUrl);
+                imageURL = newLink1+lon+newLink2+lat+newLink3;
+                Picasso.with(NasaDisplayImageryDatabase.this).load(imageURL).into(imageView);
                 addFav.setOnClickListener(add -> {
                     bitmapDrawable = (BitmapDrawable) imageView.getDrawable();
                     saveImage = bitmapDrawable.getBitmap();
                     saveToInternalStorage(saveImage);
                 });
-            }
-            else {
-                wrongData.setText("You Entered Wrong Data.\nPlease Try Again");
-
-            }
         }
     }
 
     private String saveToInternalStorage(Bitmap bitmapImage) {
         ContextWrapper cw = new ContextWrapper(getApplicationContext());
-        // path to /data/data/yourapp/app_data/image
+//         path to /data/data/yourapp/app_data/image
         File directory = cw.getDir("imageLonLat", Context.MODE_PRIVATE);
-        // Create imageDir
-        File mypath = new File(directory, dateFromUrl + ".jpg");
+//         Create imageDir
+        File mypath = new File(directory, lon+lat + ".jpg");
         FileOutputStream fos = null;
 
         try {
             if (!mypath.exists()) {
                 fos = new FileOutputStream(mypath);
-                // Use the compress method on the BitMap
+//                 Use the compress method on the BitMap
                 bitmapImage.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-                //add the data to databse
-                db.inserData(dateFromUrl,urlImage,lon,lat);
+//                add the data to databse
+                db.inserData(imageURL,lon,lat);
                 Toast.makeText(NasaDisplayImageryDatabase.this, "Image Added", Toast.LENGTH_LONG).show();
             }
             else {

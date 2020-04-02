@@ -11,11 +11,10 @@ public class DatabaseNasaImagery extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "NasaLonLat";
     public static final String TABLE_NAME = "LonLatTable";
-    public final static int VERSION_NUM = 1;
+    public final static int VERSION_NUM = 2;
 
     //columns
     public final static String COL_ID = "_id";
-    public static final String COL_DATE = "DATE";
     public static final String COL_URL = "URL";
     public static final String COL_LON = "LON";
     public static final String COL_LAT = "LAT";
@@ -28,7 +27,7 @@ public class DatabaseNasaImagery extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLE_NAME + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, URL TEXT, LON TEXT, LAT TEXT)");
+        db.execSQL("CREATE TABLE " + TABLE_NAME + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, URL TEXT, LON TEXT, LAT TEXT)");
         // add or remove columns
     }
 
@@ -49,10 +48,9 @@ public class DatabaseNasaImagery extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean inserData(String date, String url, String lon, String lat) {
+    public boolean inserData( String url, String lon, String lat) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_DATE, date);
         contentValues.put(COL_URL, url);
         contentValues.put(COL_LON, lon);
         contentValues.put(COL_LAT, lat);

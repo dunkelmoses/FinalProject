@@ -80,14 +80,13 @@ public class DataList extends AppCompatActivity {
 
 
         // We want to get all of the columns. Look at MyOpener.java for the definitions:
-        String[] columns = {DatabaseNasaImagery.COL_ID, DatabaseNasaImagery.COL_DATE, DatabaseNasaImagery.COL_URL
+        String[] columns = {DatabaseNasaImagery.COL_ID, DatabaseNasaImagery.COL_URL
                 , DatabaseNasaImagery.COL_LON, DatabaseNasaImagery.COL_LAT};
         //query all the results from the database:
         Cursor results = db.query(false, DatabaseNasaImagery.TABLE_NAME, columns, null, null, null, null, null, null);
 
         //Now the results object has rows of results that match the query.
         //find the column indices:
-        int dateColumnIndex = results.getColumnIndex(DatabaseNasaImagery.COL_DATE);
         int regUrlColumnIndex = results.getColumnIndex(DatabaseNasaImagery.COL_URL);
         int idColIndex = results.getColumnIndex(DatabaseNasaImagery.COL_ID);
         int lonColIndex = results.getColumnIndex(DatabaseNasaImagery.COL_LON);
@@ -95,7 +94,6 @@ public class DataList extends AppCompatActivity {
 
         //iterate over the results, return true if there is a next item:
         while (results.moveToNext()) {
-            String date = results.getString(dateColumnIndex);
             String url = results.getString(regUrlColumnIndex);
             String lon = results.getString(lonColIndex);
             String lat = results.getString(latColIndex);
@@ -103,7 +101,7 @@ public class DataList extends AppCompatActivity {
             long id = results.getLong(idColIndex);
 
             //add the new Contact to the array list:
-            contactsList.add(new ContactLonLat(id, date, url, lon, lat));
+            contactsList.add(new ContactLonLat(id, url, lon, lat));
         }
         //At this point, the contactsList array has loaded every row from the cursor.
     }
@@ -130,7 +128,6 @@ public class DataList extends AppCompatActivity {
             viewDate = (TextView) newView.findViewById(R.id.date);
             viewLon = (TextView) newView.findViewById(R.id.lonRow);
             viewLat = (TextView) newView.findViewById(R.id.latRow);
-            viewDate.setText("Date : " + thisRow.getDate());
             viewLon.setText("Longitude : " + thisRow.getLon());
             viewLat.setText("Latitude  : " + thisRow.getLat());
 
