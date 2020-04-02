@@ -3,8 +3,7 @@ package com.example.finalproject.NasaLonLat;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.example.finalproject.BBCNEWS;
-import com.example.finalproject.Guardian;
+
 import com.example.finalproject.MainActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -20,7 +19,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.example.finalproject.NasaImageOfTheDay;
+
 import com.example.finalproject.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -98,20 +97,10 @@ public class NasaImageryDatabase extends AppCompatActivity implements Navigation
                 startActivity(search);
                 break;
             case R.id.help:
-                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By ",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By Omar ",Toast.LENGTH_LONG).show();
                 break;
-            case R.id.BBC:
-                Intent bbc = new Intent(NasaImageryDatabase.this, BBCNEWS.class);
-                startActivity(bbc);
-                break;
-            case R.id.GUADRIAN:
-                Intent gardian = new Intent(NasaImageryDatabase.this, Guardian.class);
-                startActivity(gardian);
-                break;
-            case R.id.NASAIMAGE:
-                Intent nasaLongLat = new Intent(NasaImageryDatabase.this, NasaImageOfTheDay.class);
-                startActivity(nasaLongLat);
-                break;
+
+
         }
 
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
@@ -135,27 +124,20 @@ public class NasaImageryDatabase extends AppCompatActivity implements Navigation
         {
             //what to do when the menu item is selected:
             case R.id.MainPage:
-                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By Team1",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaImageryDatabase.this,"Main Page",Toast.LENGTH_LONG).show();
                 break;
             case R.id.FavouriteList:
-                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By Team2",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaImageryDatabase.this,"My fav list",Toast.LENGTH_LONG).show();
                 break;
             case R.id.SearchImage:
-                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By Team3",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaImageryDatabase.this,"Search for an image",Toast.LENGTH_LONG).show();
                 break;
             case R.id.help:
                 help();
                 break;
-            case R.id.BBC:
-                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By Team5",Toast.LENGTH_LONG).show();
 
-                break;
-            case R.id.GUADRIAN:
-                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By Team6",Toast.LENGTH_LONG).show();
-
-                break;
             case R.id.NASAIMAGE:
-                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By Team7",Toast.LENGTH_LONG).show();
+                Toast.makeText(NasaImageryDatabase.this,"This Project Was Made By Omar Saeed",Toast.LENGTH_LONG).show();
                 break;
         }
         return true;

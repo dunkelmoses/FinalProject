@@ -21,10 +21,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.finalproject.BBCNEWS;
-import com.example.finalproject.Guardian;
+
 import com.example.finalproject.MainActivity;
-import com.example.finalproject.NasaImageOfTheDay;
 import com.example.finalproject.R;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
@@ -90,9 +88,9 @@ public class NasaDisplayImageryDatabase extends AppCompatActivity  implements Na
         @Override
         protected String doInBackground(String... strings) {
 
-            String link1 = "https://api.nasa.gov/planetary/earth/imagery/?lon=";
-            String link2 = "&lat=";
-            String link3 = "&date=2016-02-01&api_key=DEMO_KEY";
+            String link1 = "http://dev.virtualearth.net/REST/V1/Imagery/Map/Birdseye/?lat="+",";
+            String link2 = "&lon=";
+            String link3 = "/20?dir=180&ms=500,500&key=AhiAkUp5OJNThWRDqdFnxmsd2SCgIwaFn_k9Q2UEroZ69tQxE6zV1rY5klvlJLne";
             try {
                 URL url = new URL(link1+lon+link2+lat+link3);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -185,18 +183,8 @@ public class NasaDisplayImageryDatabase extends AppCompatActivity  implements Na
                 Intent search = new Intent(NasaDisplayImageryDatabase.this, NasaImageryDatabase.class);
                 startActivity(search);
                 break;
-            case R.id.BBC:
-                Intent bbc = new Intent(NasaDisplayImageryDatabase.this, BBCNEWS.class);
-                startActivity(bbc);
-                break;
-            case R.id.GUADRIAN:
-                Intent gardian = new Intent(NasaDisplayImageryDatabase.this, Guardian.class);
-                startActivity(gardian);
-                break;
-            case R.id.NASAIMAGE:
-                Intent nasaLongLat = new Intent(NasaDisplayImageryDatabase.this, NasaImageOfTheDay.class);
-                startActivity(nasaLongLat);
-                break;
+
+
             case R.id.help:
                 Toast.makeText(NasaDisplayImageryDatabase.this,"This Project Was Made By ",Toast.LENGTH_LONG).show();
                 break;

@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.example.finalproject.NasaLonLat.DataList;
+
 import com.example.finalproject.R;
 
 public class BlankFragment extends Fragment {

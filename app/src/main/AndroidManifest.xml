@@ -17,9 +17,7 @@
         <activity android:name=".NasaLonLat.DatabaseNasaImagery" />
         <activity android:name=".NasaLonLat.Empty" />
         <activity android:name=".NasaLonLat.NasaDisplayImageryDatabase" />
-        <activity android:name=".BBCNEWS" />
         <activity android:name=".NasaLonLat.NasaImageryDatabase" />
-        <activity android:name=".Guardian" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
