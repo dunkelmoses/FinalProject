@@ -172,7 +172,7 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.items, menu);
+        inflater.inflate(R.menu.items_nasa_image, menu);
 
         return true;
     }

@@ -12,13 +12,14 @@ public class DatabaseNasaImage extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "NasaImage";
     public static final String TABLE_NAME = "ImagesTable";
-    public final static int VERSION_NUM = 1;
+    public final static int VERSION_NUM = 2;
 
     //columns
     public final static String COL_ID = "_id";
     public static final String COL_DATE = "DATE";
     public static final String COL_REGURL = "RegURL";
     public static final String COL_HDURL = "HdURL";
+    public static final String COL_MESG = "messges";
 
 
     public DatabaseNasaImage(Context ctx) {
@@ -28,7 +29,8 @@ public class DatabaseNasaImage extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLE_NAME + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, RegURL TEXT, HdURL TEXT)");
+        db.execSQL("CREATE TABLE " + TABLE_NAME + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "DATE TEXT, RegURL TEXT, HdURL TEXT, messges TEXT)");
         // add or remove columns
     }
 
@@ -49,12 +51,14 @@ public class DatabaseNasaImage extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean inserData(String date, String regUrl, String hdUrl) {
+    public boolean inserData(String date, String regUrl, String hdUrl,String messages) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_DATE, date);
         contentValues.put(COL_REGURL, regUrl);
         contentValues.put(COL_HDURL, hdUrl);
+        contentValues.put(COL_MESG, messages);
+
         long result = db.insert(TABLE_NAME, null, contentValues);
         if (result == -1)
             return false;

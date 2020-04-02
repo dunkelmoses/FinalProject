@@ -62,6 +62,6 @@
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/header_layout"
-            app:menu="@menu/items" />
+            app:menu="@menu/items_nasa_image" />
     </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>

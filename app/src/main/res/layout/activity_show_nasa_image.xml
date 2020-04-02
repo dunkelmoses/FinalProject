@@ -25,7 +25,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="300dp"
                 android:id="@+id/ImageFromUrl"
                 />
 
@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/dateOftheImage"
-                android:layout_below="@+id/ImageFromUrl"/>
+                android:layout_below="@+id/messages"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,6 +49,21 @@
                 android:clickable="true"
                 android:layout_below="@id/RegUrl"
                 android:id="@+id/hdUrl"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/whatyouthin"
+                android:id="@+id/whatyouthink"
+                android:layout_below="@+id/ImageFromUrl"
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/messages"
+                android:layout_below="@+id/whatyouthink"
+                android:hint="type here"
+                />
 
             <Button
                 android:layout_width="50dp"
@@ -71,6 +86,6 @@
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/header_layout"
-            app:menu="@menu/items" />
+            app:menu="@menu/items_nasa_image" />
     </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>

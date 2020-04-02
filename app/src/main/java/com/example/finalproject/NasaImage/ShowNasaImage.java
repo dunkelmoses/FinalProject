@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,14 +46,14 @@ import java.util.ArrayList;
 
 public class ShowNasaImage extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener{
     private Intent intent;
-    private String date, hdImageURL, imageURL,explanation;
+    private String date, hdImageURL, imageURL;
     private Button addFav;
     private Bitmap saveImage;
     private BitmapDrawable bitmapDrawable;
     private ImageView imageView;
     private TextView dateImage, urlImage, hdUrlImage;
     private DatabaseNasaImage db;
-
+    private EditText messages;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,9 +63,11 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
         urlImage = findViewById(R.id.RegUrl);
         hdUrlImage = findViewById(R.id.hdUrl);
         addFav = findViewById(R.id.AddToFav);
+        messages = findViewById(R.id.messages);
 
         intent = getIntent();
         date = intent.getStringExtra("date");
+
         CallJson callJson = new CallJson();
         callJson.execute();
         db = new DatabaseNasaImage(this);
@@ -107,7 +110,6 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
                 JSONObject jObject = new JSONObject(result);
                 imageURL = jObject.getString("url");
                 hdImageURL = jObject.getString("hdurl");
-                explanation = jObject.getString("explanation");
 
             } catch (Exception e) {
             }
@@ -125,6 +127,9 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
                 bitmapDrawable = (BitmapDrawable) imageView.getDrawable();
                 saveImage = bitmapDrawable.getBitmap();
                 saveToInternalStorage(saveImage);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("messages", messages.getText().toString());
             });
         }
     }
@@ -143,7 +148,7 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
                 // Use the compress method on the BitMap object to write image to the OutputStream
                 bitmapImage.compress(Bitmap.CompressFormat.JPEG, 100, fos);
                 //add the data to databse by this line
-                db.inserData(date,imageURL,hdImageURL);
+                db.inserData(date,imageURL,hdImageURL,messages.getText().toString());
                 Toast.makeText(ShowNasaImage.this, "Added", Toast.LENGTH_LONG).show();
             }
             else {
@@ -233,7 +238,7 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.items, menu);
+        inflater.inflate(R.menu.items_nasa_image, menu);
 
         return true;
     }
