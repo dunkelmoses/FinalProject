@@ -1,26 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:background="@color/cardview_shadow_start_color"
-    android:orientation="vertical"
-    android:id="@+id/root">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-
-    <ImageView
-        android:id="@+id/AlgonquinIcon"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="111dp"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:src="@drawable/nasaheader" />
-
-    <RelativeLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="@color/cardview_dark_background"
-        android:layout_alignParentBottom="true"
-        />
+        android:layout_height="wrap_content"
+        android:text="App map"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>

@@ -1,35 +1,33 @@
-
 <resources>
-    <string name="app_name" translatable="false">FinalProject</string>
-
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-
-    <!-- This is for Nasa Image Database-->
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
-    <string name="open">open</string>
-    <string name="close">close</string>
-    <string name="date">date:</string>
-    <string name="Confirm">confirm</string>
-    <string name="ALGONQUIN_COLLEGE">ALGONQUIN COLLEGE</string>
-    <string name="search">Search </string>
-    <string name="MainPage">Main </string>
-    <string name="EnterLon">Enter The Longitude</string>
-    <string name="EnterLat">Enter The Latitude</string>
-
-    <string name="Enter">Enter</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">FinalProject</string>
+    <string name="image_of_the_day">Image of the Day</string>
+    <string name="guardian">Guardian</string>
+    <string name="bbc_news">BBC News</string>
+    <string name="nasa_earth_image">Nasa Earth Image</string>
+    <string name="getImageOfTheDay">Get image</string>
+    <string name="textviewSelectDate">Select a date and click the button to get a new image</string>
+    <string name="birthday">Select a date</string>
+    <string name="buttonSaveImage">Save Image</string>
+    <string name="hello_blank_fragment">Message Here</string>
+    <string name="lat">Latitude:</string>
+    <string name="lon">Longitude:</string>
+    <string name="image_date">Date:</string>
+    <string name="lat2">Latitude</string>
+    <string name="lon2">Longitude</string>
+    <string name="search_image">Search Earth Image</string>
+    <string name="addToFav">Add to Favorites</string>
+    <string name="bing_help">Help</string>
+    <string name="myFav">Favorites</string>
+    <string name="toolbar_title">Nasa Image Finder</string>
+    <string name="toolbar_subtitle">Omar Saeed - version 2.0</string>
+    <string name="bad_input">Unable to display the image for  inputted longitude or latitude</string>
+    <string name="null_image">No image found</string>
+    <string name="addedToFav">Image added to your favorites List</string>
+    <string name="info_message1">To use this application you enter a longitude and a latitude. You can save the image if you like it or search again.</string>
+    <string name="info_message2">Help opened</string>
+    <string name="info_message3">times.</string>
+    <string name="finished">Finished</string>
+    <string name="remove_fav">Remove image from favorites List?</string>
+    <string name="file_delete">File delete result:</string>
 
 </resources>

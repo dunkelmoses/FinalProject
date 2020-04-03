@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/actionLaunchBBC"
+        android:icon="@drawable/bbc"
+        android:title="@string/bbc_news"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/actionLaunchGuardian"
+        android:icon="@drawable/guardian"
+        android:title="@string/guardian"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/actionLaunchNasaEarthImage"
+        android:icon="@drawable/nasa1"
+        android:title="@string/nasa_earth_image"
+        app:showAsAction="ifRoom" />
+
+
+</menu>

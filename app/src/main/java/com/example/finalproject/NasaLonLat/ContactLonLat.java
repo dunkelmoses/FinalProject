@@ -1,57 +1,56 @@
 package com.example.finalproject.NasaLonLat;
-public class ContactLonLat {
-    protected long id;
-    private String date;
-    private String url;
-    private String lon;
-    private String lat;
+
+import java.io.Serializable;
 
 
-    public ContactLonLat() {
+class ContactLonLat implements Serializable {
+
+    private long id;
+    private String path;
+    private double latitude, longitude;
+
+    /**
+     * Default no args constructor
+     */
+    ContactLonLat(){}
+
+
+    ContactLonLat(long id, double latitude, double longitude, String path) {
+        setLatitude(latitude);
+        setLongitude(longitude);
+        setPath(path);
+        setId(id);
     }
 
-    public ContactLonLat(long id, String date, String url, String lon, String lat) {
-        this.id = id;
-        this.date = date;
-        this.url = url;
-        this.lon = lon;
-        this.lat = lat;
+    double getLatitude() {
+        return latitude;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    double getLongitude() {
+        return longitude;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 
-    public void setLon(String lon) {
-        this.lon = lon;
+    void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
-    public void setLat(String lat) {
-        this.lat = lat;
+    String getPath() {
+        return path;
     }
 
-
-    public String getDate() {
-        return date;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public String getLon() {
-        return lon;
-    }
-
-    public String getLat() {
-        return lat;
+    void setPath(String path) {
+        this.path = path;
     }
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
