@@ -28,7 +28,7 @@
                 android:id="@+id/EnterTheDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Enter The Date"
+                android:text="@string/enterDate"
                 android:layout_gravity="center"
 
                 />

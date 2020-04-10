@@ -1,27 +1,19 @@
 <resources>
-    <string name="app_name" translatable="false">FinalProject</string>
-    <string name="Team">
-        Team members:\n
-        1- Hicham Sajaa\n
-        2- Omar Saeed\n
-        3- Gin Lin\n
-        4- Mousa Abdualziz
+    <string name="app_name">FinalProject</string>
+    <string name="title_activity_main2" translatable="false">Main2Activity</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">Android Studio</string>
+    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
+    <string name="action_settings" translatable="false">Settings</string>
 
-    </string>
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
+    <string name="menu_home" translatable="false">Home</string>
+    <string name="menu_gallery" translatable="false">Gallery</string>
+    <string name="menu_slideshow" translatable="false">Slideshow</string>
+    <string name="menu_tools" translatable="false">Tools</string>
+    <string name="menu_share" translatable="false">Share</string>
+    <string name="menu_send" translatable="false">Send</string>
     <string name="open">open</string>
     <string name="close">close</string>
     <string name="date">date:</string>
@@ -29,9 +21,34 @@
     <string name="ALGONQUIN_COLLEGE">ALGONQUIN COLLEGE</string>
     <string name="search">Search For New Image</string>
     <string name="MainPage">Main Page</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="whatyouthin">What do you think about the photo?</string>
+    <string name="savedDate">The date you entered is : </string>
+    <string name="savedDate2">The date you entered last time was : </string>
+    <string name="enterDate">Enter The Date</string>
+    <string name="added">Added</string>
+    <string name="alreadyExist">Already Exist</string>
+    <string name="datewithcolon">"Date: "</string>
+    <string name="urlwithcolon">"URL: "</string>
+    <string name="hdurlwithcolon">"HDURL: "</string>
+    <string name="enterDateFirst">You Must Enter a Date first</string>
+    <string name="typeHere">type here</string>
+    <string name="help">Help</string>
+    <string name="FavouriteList">Favourite List</string>
+    <string name="bbc">BBC</string>
+    <string name="Guardian">Guardian</string>
+    <string name="nasaTitle">NASA</string>
+    <string name="helpmessage">
+        1- Pick a date\n
+        2- If you liked the picture, write a comment then click on like button\n
+        3- Now your picture is saved in your list and your device
+    </string>
+    <string name="howItWorks">How does this app work?</string>
+    <string name="dismiss">dismiss</string>
+    <string name="Fragment">Fragment</string>
+    <string name="delete">Delete</string>
+    <string name="youClickOn">"You clicked on item "</string>
+    <string name="wantToDelete">Would you like to delete this picture?</string>
+
 
 </resources>

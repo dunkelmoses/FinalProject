@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">مشروع التخرج</string>
+    <string name="whatyouthin" >شرايك بالصوره؟</string>
+    <string name="savedDate">التاريخ الذي ادخلته هو: </string>
+    <string name="savedDate2">التاريخ الذي ادخلته اخر مره هو: </string>
+    <string name="enterDate">ادخل التاريخ</string>
+    <string name="added">تمت الاضافه</string>
+    <string name="alreadyExist">الصوره موجود بالفعل</string>
+    <string name="datewithcolon">التاريخ :</string>
+    <string name="urlwithcolon">"يو ار ال: "</string>
+    <string name="hdurlwithcolon">"اتش دي يو ار ال: "</string>
+    <string name="enterDateFirst">يجب ادخال التاريخ اولا</string>
+    <string name="search" >ابحث عن صوره جديده</string>
+    <string name="ALGONQUIN_COLLEGE" >كليه القونكوين</string>
+    <string name="Confirm" >تأكيد</string>
+    <string name="typeHere">اكتب هنا</string>
+    <string name="MainPage" >الصفحه الرئيسيه</string>
+    <string name="date" >تاريخ :</string>
+    <string name="help">مساعده</string>
+    <string name="FavouriteList">المفضله</string>
+    <string name="bbc">بي بي سي</string>
+    <string name="Guardian">جارديان</string>
+    <string name="nasaTitle">ناسا</string>
+    <string name="helpmessage">
+        1- اختر التاريخ يا عزيزي\n
+        2- اذا اعجبتك الصوره، ضع تعليق ثم اضغط علامه التفضيل\n
+        3- الان اصبحت الصوره محفوظه في جهازك وفي قائمه التفضيل
+    </string>
+    <string name="howItWorks">كيف يعمل البرنامج؟</string>
+    <string name="dismiss">تراجع</string>
+    <string name="Fragment">فراغمنت</string>
+    <string name="delete">حذف</string>
+    <string name="youClickOn">لقد قمت بالضغط على</string>
+    <string name="wantToDelete">شرايك تحذف الصوره بعد؟</string>
+</resources>

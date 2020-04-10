@@ -4,7 +4,7 @@
 
 
     <item android:id="@+id/help"
-        android:title="Help"
+        android:title="@string/help"
         android:icon="@drawable/helpicon"
         app:showAsAction="always"
         android:orderInCategory="400"
@@ -23,25 +23,25 @@
         app:showAsAction="never"/>
 
     <item android:id="@+id/FavouriteList"
-        android:title="Favourite List"
+        android:title="@string/FavouriteList"
         android:orderInCategory="20"
         android:icon="@drawable/hearticon"
         app:showAsAction="never"/>
 
     <item android:id="@+id/BBC"
-        android:title="BBC"
+        android:title="@string/bbc"
         android:orderInCategory="30"
         android:icon="@drawable/bbcicon"
         app:showAsAction="never"/>
 
     <item android:id="@+id/GUADRIAN"
-        android:title="Guardian"
+        android:title="@string/Guardian"
         android:orderInCategory="40"
         android:icon="@drawable/guadrianicon"
         app:showAsAction="never"/>
 
     <item android:id="@+id/NASALANGLAT"
-        android:title="NASA"
+        android:title="@string/nasaTitle"
         android:orderInCategory="50"
         android:icon="@drawable/nasaicon"
         app:showAsAction="never"/>

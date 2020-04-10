@@ -2,6 +2,7 @@ package com.example.finalproject.NasaImage;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -10,7 +11,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
@@ -39,10 +39,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 
 public class ShowNasaImage extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener{
     private Intent intent;
@@ -119,10 +117,13 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
         @Override
         protected void onPostExecute(String s) {
             Picasso.with(ShowNasaImage.this).load(imageURL).into(imageView);
+            String datewithcolon = getString(R.string.datewithcolon);
+            String urlwithcolon = getString(R.string.urlwithcolon);
+            String hdurlwithcolon = getString(R.string.hdurlwithcolon);
 
-            dateImage.setText("Date: "+date);
-            urlImage.setText("URL: "+imageURL);
-            hdUrlImage.setText("HDURL: "+hdImageURL);
+            dateImage.setText( datewithcolon+date);
+            urlImage.setText(urlwithcolon+imageURL);
+            hdUrlImage.setText(hdurlwithcolon+hdImageURL);
             addFav.setOnClickListener(add -> {
                 bitmapDrawable = (BitmapDrawable) imageView.getDrawable();
                 saveImage = bitmapDrawable.getBitmap();
@@ -149,10 +150,10 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
                 bitmapImage.compress(Bitmap.CompressFormat.JPEG, 100, fos);
                 //add the data to databse by this line
                 db.inserData(date,imageURL,hdImageURL,messages.getText().toString());
-                Toast.makeText(ShowNasaImage.this, "Added", Toast.LENGTH_LONG).show();
+                Toast.makeText(ShowNasaImage.this, getString(R.string.added), Toast.LENGTH_LONG).show();
             }
             else {
-                Toast.makeText(ShowNasaImage.this, "Already Exist", Toast.LENGTH_LONG).show();
+                Toast.makeText(ShowNasaImage.this, getString(R.string.alreadyExist), Toast.LENGTH_LONG).show();
             }
             fos.flush();
             fos.close();
@@ -180,15 +181,15 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
                 startActivity(search);
                 break;
             case R.id.help:
-                Toast.makeText(ShowNasaImage.this,"This Project Was Made By Batman",Toast.LENGTH_LONG).show();
+                showHelp();
                 break;
             case R.id.BBC:
                 Intent bbc = new Intent(ShowNasaImage.this, BBCNEWS.class);
                 startActivity(bbc);
                 break;
             case R.id.GUADRIAN:
-                Intent gardian = new Intent(ShowNasaImage.this, Guardian.class);
-                startActivity(gardian);
+                Intent guardian = new Intent(ShowNasaImage.this, Guardian.class);
+                startActivity(guardian);
                 break;
             case R.id.NASALANGLAT:
                 Intent nasaLongLat = new Intent(ShowNasaImage.this, NasaDatabase.class);
@@ -218,7 +219,7 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
                 Toast.makeText(ShowNasaImage.this,"This Project Was Made By BATMAN",Toast.LENGTH_LONG).show();
 
             case R.id.help:
-                Toast.makeText(ShowNasaImage.this,"This Project Was Made By EINSTEIN",Toast.LENGTH_LONG).show();
+                showHelp();
                 break;
             case R.id.BBC:
                 Toast.makeText(ShowNasaImage.this,"This Project Was Made By LUFFY",Toast.LENGTH_LONG).show();
@@ -241,6 +242,15 @@ public class ShowNasaImage extends AppCompatActivity  implements NavigationView.
         inflater.inflate(R.menu.items_nasa_image, menu);
 
         return true;
+    }
+
+    public void showHelp(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.howItWorks))
+                .setMessage(getString(R.string.helpmessage))
+                .setNeutralButton(getString(R.string.dismiss), (click, b) -> { })
+                .create().show();
     }
 
 }

@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/messages"
                 android:layout_below="@+id/whatyouthink"
-                android:hint="type here"
+                android:hint="@string/typeHere"
                 />
 
             <Button

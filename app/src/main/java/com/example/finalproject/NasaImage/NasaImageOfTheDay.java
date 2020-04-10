@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.AlertDialog;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -39,6 +40,7 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
     private Intent intent;
     private DatePickerDialog datePickerDialog;
     private SharedPreferences prefs = null;
+    private ShowNasaImage showNasaImage = new ShowNasaImage();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,8 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        String savedDate = getString(R.string.savedDate);
+        String savedDate2 = getString(R.string.savedDate2);
 
         enterDate.setOnClickListener(d -> {
 
@@ -72,8 +76,8 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
                         @Override
                         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                             date = year + "-" + month + "-" + dayOfMonth;
-                            showDate.setText("The date you entered is : " + date);
-                            saveSharedPrefs("The date you entered last time was "+ date);
+                            showDate.setText(savedDate + date);
+                            saveSharedPrefs(savedDate2+ date);
                         }
                     },
                     Calendar.getInstance().get(Calendar.YEAR),
@@ -91,7 +95,7 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
                     startActivity(intent);
                 }
                 else {
-                    Toast.makeText(this, "You Must Enter a Date first", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.enterDateFirst), Toast.LENGTH_SHORT).show();
                 }
             });
     }
@@ -114,7 +118,7 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
                 startActivity(search);
                 break;
             case R.id.help:
-                Toast.makeText(NasaImageOfTheDay.this,"This Project Was Made By Batman",Toast.LENGTH_LONG).show();
+                showHelp();
                 break;
             case R.id.BBC:
                 Intent bbc = new Intent(NasaImageOfTheDay.this, BBCNEWS.class);
@@ -151,7 +155,7 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
                 Toast.makeText(NasaImageOfTheDay.this,"This Project Was Made By BATMAN",Toast.LENGTH_LONG).show();
                 break;
             case R.id.help:
-                Toast.makeText(NasaImageOfTheDay.this,"This Project Was Made By EINSTEIN",Toast.LENGTH_LONG).show();
+                showHelp();
                 break;
             case R.id.BBC:
                 Toast.makeText(NasaImageOfTheDay.this,"This Project Was Made By LUFFY",Toast.LENGTH_LONG).show();
@@ -181,5 +185,13 @@ public class NasaImageOfTheDay extends AppCompatActivity implements NavigationVi
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("date", stringToSave);
         editor.commit();
+    }
+    public void showHelp(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.howItWorks))
+                .setMessage(getString(R.string.helpmessage))
+                .setNeutralButton(getString(R.string.dismiss), (click, b) -> { })
+                .create().show();
     }
 }

@@ -47,6 +47,7 @@ public class ImagesList extends AppCompatActivity implements NavigationView.OnNa
     private Intent intent;
     private Cursor results;
     public static final String ITEM_POSITION = "POSITION";
+    private ShowNasaImage showNasaImage = new ShowNasaImage();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,24 +156,24 @@ public class ImagesList extends AppCompatActivity implements NavigationView.OnNa
         String pathDeleteImage = x + viewDate.getText().toString()+".jpg";
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("You clicked on item " + (position+1))
-                .setMessage("Would you like to delete this picture?")
+        builder.setTitle(getString(R.string.youClickOn) + (position+1))
+                .setMessage(getString(R.string.wantToDelete))
                 .setView(contact_view) //add the 3 edit texts showing the contact information
-                .setNegativeButton("Delete", (click, b) -> {
+                .setNegativeButton(getString(R.string.delete), (click, b) -> {
                     deleteContact(selectedContact); //remove the contact from database
                     contactsList.remove(position); //remove the contact from contact list
                     adapter.notifyDataSetChanged(); //there is one less item so update the list
                     File deleteFile = new File(pathDeleteImage);
                     deleteFile.delete();
                 })
-                .setPositiveButton("Fragment",(click, b)->{
+                .setPositiveButton(getString(R.string.Fragment),(click, b)->{
                     Intent intent = new Intent(ImagesList.this,Empty.class);
                     String s = String.valueOf(id);
                     intent.putExtra(ITEM_POSITION,s);
                     startActivity(intent);
 
                 })
-                .setNeutralButton("dismiss", (click, b) -> { })
+                .setNeutralButton(getString(R.string.dismiss), (click, b) -> { })
                 .create().show();
     }
 
@@ -194,7 +195,7 @@ public class ImagesList extends AppCompatActivity implements NavigationView.OnNa
                 startActivity(search);
                 break;
             case R.id.help:
-                Toast.makeText(ImagesList.this,"This Project Was Made By Batman",Toast.LENGTH_LONG).show();
+                showHelp();
                 break;
             case R.id.BBC:
                 Intent bbc = new Intent(ImagesList.this, BBCNEWS.class);
@@ -231,7 +232,7 @@ public class ImagesList extends AppCompatActivity implements NavigationView.OnNa
                 Toast.makeText(ImagesList.this,"This Project Was Made By BATMAN",Toast.LENGTH_LONG).show();
 
             case R.id.help:
-                Toast.makeText(ImagesList.this,"This Project Was Made By EINSTEIN",Toast.LENGTH_LONG).show();
+               showHelp();
                 break;
             case R.id.BBC:
                 Toast.makeText(ImagesList.this,"This Project Was Made By LUFFY",Toast.LENGTH_LONG).show();
@@ -255,5 +256,12 @@ public class ImagesList extends AppCompatActivity implements NavigationView.OnNa
 
         return true;
     }
+    public void showHelp(){
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.howItWorks))
+                .setMessage(getString(R.string.helpmessage))
+                .setNeutralButton(getString(R.string.dismiss), (click, b) -> { })
+                .create().show();
+    }
 }
